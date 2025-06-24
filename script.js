@@ -132,6 +132,8 @@ function initialAnimation() {
 // Hiệu ứng animation khi scroll
 function handleScrollAnimations() {
     const aboutContainer = document.querySelector('.about-container');
+    const sectionTitle = document.querySelector('.section-title');
+    const tutorialSteps = document.querySelectorAll('.tutorial-step');
     const scrollPosition = window.scrollY + window.innerHeight * 0.8;
     
     // Kiểm tra xem about-section có hiển thị trong viewport không
@@ -142,6 +144,24 @@ function handleScrollAnimations() {
             aboutContainer.classList.add('animate');
         }
     }
+    
+    // Kiểm tra tiêu đề section hướng dẫn
+    if (sectionTitle) {
+        const titlePosition = sectionTitle.getBoundingClientRect().top + window.scrollY;
+        
+        if (scrollPosition > titlePosition) {
+            sectionTitle.classList.add('animate');
+        }
+    }
+    
+    // Kiểm tra từng step trong tutorial-section
+    tutorialSteps.forEach(step => {
+        const stepPosition = step.getBoundingClientRect().top + window.scrollY;
+        
+        if (scrollPosition > stepPosition) {
+            step.classList.add('animate');
+        }
+    });
 }
 
 window.addEventListener('load', () => {
