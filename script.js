@@ -173,5 +173,5 @@ window.addEventListener('load', () => {
     setTimeout(handleScrollAnimations, 100);
 });
 
-window.addEventListener('resize', preventOverflow);
+window.addEventListener('resize', preventOverflow); 
 window.addEventListener('scroll', handleScrollAnimations); 
