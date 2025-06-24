@@ -1,8 +1,6 @@
 document.querySelector('.scroll-indicator').addEventListener('click', function() {
-    window.scrollTo({
-        top: window.innerHeight,
-        behavior: 'smooth'
-    });
+    const aboutSection = document.getElementById('about');
+    aboutSection.scrollIntoView({ behavior: 'smooth' });
 });
 
 // Tạo hiệu ứng sao lấp lánh
@@ -131,10 +129,29 @@ function initialAnimation() {
     }, 2800);
 }
 
+// Hiệu ứng animation khi scroll
+function handleScrollAnimations() {
+    const aboutContainer = document.querySelector('.about-container');
+    const scrollPosition = window.scrollY + window.innerHeight * 0.8;
+    
+    // Kiểm tra xem about-section có hiển thị trong viewport không
+    if (aboutContainer) {
+        const elementPosition = aboutContainer.getBoundingClientRect().top + window.scrollY;
+        
+        if (scrollPosition > elementPosition) {
+            aboutContainer.classList.add('animate');
+        }
+    }
+}
+
 window.addEventListener('load', () => {
     createStarField();
     initialAnimation();
     preventOverflow();
+    
+    // Chạy ngay khi trang load để kích hoạt hiệu ứng nếu phần tử đã hiển thị trong viewport
+    setTimeout(handleScrollAnimations, 100);
 });
 
-window.addEventListener('resize', preventOverflow); 
+window.addEventListener('resize', preventOverflow);
+window.addEventListener('scroll', handleScrollAnimations); 

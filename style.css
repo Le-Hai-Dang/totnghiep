@@ -837,4 +837,119 @@ nav ul li:last-child a:after {
         0% { transform: rotate(0deg) translateX(100px) translateY(30px) rotate(0deg); }
         100% { transform: rotate(-360deg) translateX(100px) translateY(30px) rotate(360deg); }
     }
+}
+
+/* About Section Styles */
+.about-section {
+    padding: 80px 50px;
+    background: linear-gradient(180deg, #0b1030 0%, #1a237e 50%, #0b1030 100%);
+    position: relative;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInBottom 1s forwards;
+    animation-play-state: paused;
+}
+
+.about-container.animate {
+    animation-play-state: running;
+}
+
+.about-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about-title h2 {
+    font-size: 42px;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, #64B5F6, #E1F5FE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.title-underline {
+    height: 4px;
+    width: 80px;
+    background: linear-gradient(90deg, #64B5F6, #E1F5FE);
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    font-size: 18px;
+    text-align: justify;
+}
+
+.about-image {
+    flex: 1;
+    position: relative;
+}
+
+.about-image img {
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.about-image img:hover {
+    transform: scale(1.03) translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.image-caption {
+    text-align: center;
+    font-size: 14px;
+    color: #E1F5FE;
+    margin-top: 15px;
+    font-style: italic;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 50px 20px;
+    }
+    
+    .about-container {
+        padding: 30px 20px;
+    }
+    
+    .about-content {
+        flex-direction: column;
+    }
+    
+    .about-title h2 {
+        font-size: 32px;
+    }
+    
+    .about-text p {
+        font-size: 16px;
+    }
 } 
