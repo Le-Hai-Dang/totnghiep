@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lê Hải Đăng - Mô hình Smarthome</title>
+    <meta name="description" content="Ứng dụng vi điều khiển và Google Assistant trong xây dựng mô hình điều khiển thiết bị IoT cho Smart Home">
     <link rel="stylesheet" href="style.css">
+    <!-- Preload các tài nguyên quan trọng -->
+    <link rel="preload" href="assets/img/hinh1.png" as="image">
+    <link rel="preload" href="script.js" as="script">
 </head>
 <body>
     <div class="dots-bg"></div>
@@ -17,7 +21,8 @@
                 <li><a href="#">Trang chủ</a></li>
                 <li><a href="#about">Giới thiệu</a></li>
                 <li><a href="#tutorial">Hướng dẫn</a></li>
-                <li><a href="#">Liên hệ tác giả</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#contact">Liên hệ tác giả</a></li>
             </ul>
         </nav>
     </header>
@@ -73,7 +78,7 @@
             </div>
         </div>
         <div class="right-section">
-            <img src="assets/img/hinh1.png" alt="Mô hình Smarthome" class="model-image liquid-glass">
+            <img src="assets/img/hinh1.png" alt="Mô hình Smarthome" class="model-image liquid-glass" width="450" height="550" fetchpriority="high">
         </div>
         <div class="scroll-indicator">
             <p class="liquid-glass">Lướt xuống để xem giới thiệu</p>
@@ -92,7 +97,7 @@
                     <p>Đề tài nhằm xây dựng mô hình Smart Home chi phí thấp, đơn giản cho giảng dạy STEM, sử dụng ESP8266 và Arduino Uno R3. Mô hình cho phép điều khiển đèn, cửa sổ, tưới cây tự động qua cảm biến độ ẩm, giám sát và điều khiển từ xa bằng ứng dụng di động, web và giọng nói. Hệ thống dễ tiếp cận, tiết kiệm, ổn định, thúc đẩy ứng dụng IoT trong đời sống và giáo dục.</p>
                 </div>
                 <div class="about-image">
-                    <img src="assets/img/hinh2.png" alt="Mô hình Smart Home" class="liquid-glass">
+                    <img src="assets/img/hinh2.png" alt="Mô hình Smart Home" class="liquid-glass" width="400" height="300" loading="lazy">
                     <p class="image-caption">Thầy TS. Đỗ Đức Cường (bên trái) và sinh viên Lê Hải Đăng (bên phải)</p>
                 </div>
             </div>
@@ -114,7 +119,7 @@
                         <p>Gồm tất cả dụng cụ cần chuẩn bị, nơi mua và giải thích vì sao cần những linh kiện đó</p>
                         <div class="step-image">
                             <div class="img-container">
-                                <img src="assets/img/hinh3.jpeg" alt="Linh kiện cần chuẩn bị">
+                                <img src="assets/img/hinh3.jpeg" alt="Linh kiện cần chuẩn bị" width="350" height="160" loading="lazy">
                             </div>
                         </div>
                     </div>
@@ -129,7 +134,7 @@
                         <p>Chứa sơ đồ mạch, bản thiết kế mô hình và hướng dẫn lắp</p>
                         <div class="step-image">
                             <div class="img-container">
-                                <img src="assets/img/hinh5.png" alt="Thiết kế phần cứng">
+                                <img src="assets/img/hinh5.png" alt="Thiết kế phần cứng" width="350" height="160" loading="lazy">
                             </div>
                         </div>
                     </div>
@@ -144,7 +149,7 @@
                         <p>Cách nạp code cho ESP8266 và Arduino UNO R3</p>
                         <div class="step-image">
                             <div class="img-container">
-                                <img src="assets/img/hinh4.png" alt="Nạp code cho vi điều khiển">
+                                <img src="assets/img/hinh4.png" alt="Nạp code cho vi điều khiển" width="350" height="160" loading="lazy">
                             </div>
                         </div>
                     </div>
@@ -153,6 +158,58 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <section class="demo-section" id="demo">
+        <div class="section-title">
+            <h2>Demo</h2>
+            <div class="title-underline"></div>
+        </div>
+        <div class="demo-container liquid-glass">
+            <h3>Video Demo Mô Hình Smart Home</h3>
+            <div class="video-container">
+                <iframe src="https://drive.google.com/file/d/1drqZwkcGPRdhbG4Qv6J1anRc8KqqG_kU/preview" width="800" height="600" allow="autoplay" loading="lazy" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="demo-description">Video demo này trình bày cách thức hoạt động của mô hình Smart Home, các chức năng chính và cách điều khiển các thiết bị trong mô hình.</p>
+        </div>
+    </section>
+    
+    <section class="contact-section" id="contact">
+        <div class="section-title">
+            <h2>Liên Hệ Tác Giả</h2>
+            <div class="title-underline"></div>
+        </div>
+        <div class="contact-container liquid-glass">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="phone-icon"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Số Điện Thoại</h4>
+                        <p><a href="tel:0793776157">0793776157</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="email-icon"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Email</h4>
+                        <p><a href="mailto:danghaile2003@hmail.com">danghaile2003@hmail.com</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="facebook-icon"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4>Facebook</h4>
+                        <p><a href="https://www.facebook.com/hai.ang.484196/" target="_blank">facebook.com/hai.ang.484196</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js" defer></script>
 </body>
 </html>

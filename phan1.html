@@ -126,6 +126,52 @@
             font-style: italic;
             text-align: center;
         }
+        
+        .demo-container {
+            margin: 20px 0 40px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .demo-container h3 {
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .video-container iframe {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border: none;
+        }
+        
+        .demo-description {
+            color: #ddd;
+            text-align: center;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .video-container iframe {
+                width: 100%;
+                height: auto;
+                min-height: 240px;
+            }
+        }
     </style>
 </head>
 <body>
