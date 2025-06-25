@@ -74,59 +74,8 @@ function preventOverflow() {
 
 // Hiệu ứng mở đầu trang
 function initialAnimation() {
-    document.body.style.overflow = 'hidden';
-    
-    // Hiệu ứng mở đầu đặc biệt
-    const initialOverlay = document.createElement('div');
-    initialOverlay.className = 'initial-overlay';
-    initialOverlay.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #0b1030;
-        z-index: 1000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: opacity 1s ease;
-    `;
-    
-    const logo = document.createElement('div');
-    logo.textContent = 'SMARTHOME';
-    logo.style.cssText = `
-        font-size: 60px;
-        font-weight: bold;
-        color: white;
-        letter-spacing: 10px;
-        transform: scale(0);
-        transition: transform 0.8s ease;
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
-    `;
-    
-    initialOverlay.appendChild(logo);
-    document.body.appendChild(initialOverlay);
-    
-    // Hiệu ứng logo phóng to rồi thu nhỏ
-    setTimeout(() => {
-        logo.style.transform = 'scale(1.5)';
-    }, 100);
-    
-    setTimeout(() => {
-        logo.style.transform = 'scale(1)';
-    }, 900);
-    
-    // Fade out overlay
-    setTimeout(() => {
-        initialOverlay.style.opacity = '0';
-    }, 1800);
-    
-    // Xóa overlay và cho phép scroll
-    setTimeout(() => {
-        initialOverlay.remove();
-        document.body.style.overflow = '';
-    }, 2800);
+    // Đã xóa hiệu ứng chào mừng
+    // Không thực hiện gì cả
 }
 
 // Hiệu ứng animation khi scroll
@@ -166,7 +115,7 @@ function handleScrollAnimations() {
 
 window.addEventListener('load', () => {
     createStarField();
-    initialAnimation();
+    // initialAnimation(); (đã xóa hiệu ứng chào mừng)
     preventOverflow();
     
     // Chạy ngay khi trang load để kích hoạt hiệu ứng nếu phần tử đã hiển thị trong viewport

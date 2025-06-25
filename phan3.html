@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phần 3: Nạp code cho vi điều khiển - Lê Hải Đăng</title>
+    <title>Phần 3: Giải thích code - Lê Hải Đăng</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .content-section {
             padding: 40px;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
         }
         
@@ -30,109 +30,108 @@
             border-radius: 50px;
             color: white;
             text-decoration: none;
-            transition: all 0.3s;
         }
-        
+
         .back-button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-        
-        .code-section {
-            margin: 30px 0;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-        
-        .code-section.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .code-block {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            border-radius: 10px;
-            overflow: auto;
-            max-height: 400px;
-            margin: 20px 0;
-            font-family: 'Courier New', Courier, monospace;
-            color: #ddd;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .upload-steps {
-            margin-top: 40px;
-        }
-        
-        .step-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-        }
-        
-        .step-item.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .step-item h3 {
-            color: #fff;
-            margin-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            padding-bottom: 10px;
-        }
-        
-        .step-item img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin: 15px 0;
-        }
-        
-        .tab-container {
-            margin: 30px 0;
-        }
-        
-        .tab-buttons {
-            display: flex;
-            margin-bottom: 20px;
-        }
-        
-        .tab-button {
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            border: none;
-            border-radius: 5px 5px 0 0;
-            cursor: pointer;
-            margin-right: 5px;
-            transition: all 0.3s;
-        }
-        
-        .tab-button:hover {
             background: rgba(255, 255, 255, 0.1);
         }
         
-        .tab-button.active {
-            background: rgba(255, 255, 255, 0.2);
+        h1, h2, h3, h4 {
+            color: #fff;
+            margin-bottom: 20px;
         }
         
-        .tab-content {
-            display: none;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            border-radius: 0 10px 10px 10px;
+        p, li {
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 25px;
+        }
+
+        ul ul {
+            list-style-type: circle;
+            margin-top: 10px;
+        }
+
+        ol {
+            list-style-type: decimal;
+            padding-left: 25px;
         }
         
-        .tab-content.active {
-            display: block;
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .code-block-container {
+            position: relative;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            margin: 20px 0;
+            padding-top: 40px; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            padding: 0 20px 20px 20px;
+            color: #ccc;
+            font-family: 'Fira Code', 'Courier New', Courier, monospace;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        pre code {
+            font-family: 'Fira Code', 'Courier New', Courier, monospace;
+            background-color: transparent;
+            padding: 0;
+            color: inherit;
+        }
+
+        code {
+            font-family: inherit;
+            color: #66ccff;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #444;
+            color: #eee;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.3s;
+        }
+        .copy-button:hover {
+            background: #555;
+        }
+        .copy-button:active {
+            background: #333;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 40px 0;
+        }
+
     </style>
 </head>
 <body>
@@ -154,366 +153,519 @@
     <section class="content-section">
         <div class="content-container liquid-glass">
             <a href="index.html#tutorial" class="back-button">← Quay lại</a>
-            <h1>Phần 3: Nạp code cho vi điều khiển</h1>
-            <p>Trong phần này, chúng ta sẽ tìm hiểu về cách nạp code cho ESP8266 và Arduino UNO R3 để điều khiển mô hình Smarthome.</p>
             
-            <div class="tab-container">
-                <div class="tab-buttons">
-                    <button class="tab-button active" onclick="openTab(event, 'esp8266')">ESP8266</button>
-                    <button class="tab-button" onclick="openTab(event, 'arduino')">Arduino UNO R3</button>
-                </div>
+            <h1>Phần 3: Giải thích Code</h1>
+
+            <div class="section">
+                <h2>MÔ HÌNH SMART HOME</h2>
                 
-                <div id="esp8266" class="tab-content active">
-                    <div class="code-section">
-                        <h2>Code cho ESP8266 NodeMCU</h2>
-                        <p>ESP8266 NodeMCU đóng vai trò kết nối với Internet và điều khiển từ xa thông qua MQTT và Google Assistant.</p>
-                        
-                        <div class="code-block">
-                            <pre>
-#include <ESP8266WiFi.h>
-#include <PubSubClient.h>
+                <h3>1. Thư viện và biến toàn cục</h3>
+                <h4>Thư viện</h4>
+                <ul>
+                    <li><code>#include "thingProperties.h"</code><br>Đây là file header do Arduino IoT Cloud tạo ra, chứa các khai báo và cấu hình cho các biến cloud như <code>device1</code>, <code>device2</code>, <code>device3</code>, <code>device4</code>, và <code>temperature</code>. Các biến này được đồng bộ giữa thiết bị và cloud.</li>
+                    <li><code>#include &lt;DHTesp.h&gt;</code><br>Thư viện này hỗ trợ cảm biến nhiệt độ và độ ẩm DHT11/DHT22 trên ESP8266/ESP32, cung cấp các hàm để đọc dữ liệu từ cảm biến.</li>
+                    <li><code>#include &lt;Servo.h&gt;</code><br>Thư viện điều khiển servo motor, cho phép bạn đặt góc quay của servo.</li>
+                </ul>
 
-// Cấu hình WiFi
-const char* ssid = "TEN_WIFI";
-const char* password = "MAT_KHAU_WIFI";
+                <h4>Biến toàn cục</h4>
+                <ul>
+                    <li><code>#define DHTPIN D4</code> và <code>#define DHTTYPE DHT11</code><br>Xác định chân kết nối của cảm biến DHT11 là D4 và loại cảm biến là DHT11.</li>
+                    <li><code>DHTesp dht;</code><br>Khởi tạo đối tượng <code>dht</code> để giao tiếp với cảm biến DHT11.</li>
+                    <li><code>Servo sv;</code><br>Khởi tạo đối tượng <code>sv</code> để điều khiển servo motor.</li>
+                    <li><code>const int btn[4] = {D1, D2, D5, D6};</code><br>Mảng chứa các chân kết nối của 4 nút nhấn, nhưng trong mã chỉ sử dụng 3 nút (D1, D2, D5).</li>
+                    <li><code>const int out[3] = {D0, D3, D7};</code><br>Mảng chứa 3 chân đầu ra để điều khiển các thiết bị như đèn, relay, hoặc các tải khác.</li>
+                    <li><code>const int servoPin = D8;</code><br>Chân kết nối của servo motor là D8.</li>
+                    <li><code>unsigned long timeDelay = millis();</code> và <code>unsigned long timeRead = millis();</code><br>Hai biến này lưu thời gian (tính bằng mili giây) để xử lý chống dội nút (<code>timeDelay</code>) và đọc cảm biến định kỳ (<code>timeRead</code>).</li>
+                    <li><code>bool update = 0;</code><br>Cờ logic để báo hiệu cần cập nhật trạng thái các thiết bị lên cloud sau khi có thay đổi từ nút nhấn.</li>
+                    <li><code>int lastDevice4State = -1;</code><br>Biến lưu trạng thái trước đó của <code>device4</code> để phát hiện khi giá trị này thay đổi từ cloud.</li>
+                </ul>
 
-// Cấu hình MQTT
-const char* mqtt_server = "mqtt.example.com";
-const int mqtt_port = 1883;
-const char* mqtt_user = "mqtt_username";
-const char* mqtt_password = "mqtt_password";
+                <hr>
 
-// Định nghĩa các chủ đề MQTT
-const char* topic_light = "home/light";
-const char* topic_window = "home/window";
-const char* topic_water = "home/water";
-const char* topic_status = "home/status";
+                <h3>2. Hàm <code>setup()</code></h3>
+                <p>Hàm <code>setup()</code> chạy một lần khi Arduino khởi động, dùng để thiết lập các cấu hình ban đầu:</p>
+                <div class="code-block-container">
+                    <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    <pre><code class="language-cpp">void setup() {
+  Serial.begin(9600);
+  delay(1500); 
+  initProperties();
+  ArduinoCloud.begin(ArduinoIoTPreferredConnection);
+  setDebugMessageLevel(2);
+  ArduinoCloud.printDebugInfo();
 
-WiFiClient espClient;
-PubSubClient client(espClient);
-
-void setup_wifi() {
-  delay(10);
-  Serial.println("Connecting to WiFi...");
-  
-  WiFi.begin(ssid, password);
-  
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
+  dht.setup(DHTPIN, DHTesp::DHTTYPE);
+  for (int i = 0; i < 3; i++) {
+    pinMode(btn[i], INPUT_PULLUP);
+    attachInterrupt(digitalPinToInterrupt(btn[i]), handleBtn, FALLING);
+    pinMode(out[i], OUTPUT);
   }
   
-  Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
-}
+  sv.attach(servoPin);
+}</code></pre>
+                </div>
+                <ul>
+                    <li><code>Serial.begin(9600);</code><br>Khởi tạo giao tiếp Serial với tốc độ 9600 baud để in thông tin debug qua Serial Monitor.</li>
+                    <li><code>delay(1500);</code><br>Chờ 1.5 giây để hệ thống ổn định trước khi tiếp tục.</li>
+                    <li><code>initProperties();</code><br>Khởi tạo các thuộc tính của Arduino IoT Cloud, được định nghĩa trong <code>thingProperties.h</code>.</li>
+                    <li><code>ArduinoCloud.begin(ArduinoIoTPreferredConnection);</code><br>Kết nối thiết bị với Arduino IoT Cloud thông qua cấu hình kết nối đã được thiết lập.</li>
+                    <li><code>setDebugMessageLevel(2);</code> và <code>ArduinoCloud.printDebugInfo();</code><br>Đặt mức độ debug là 2 (hiển thị thông tin chi tiết) và in thông tin debug của cloud.</li>
+                    <li><code>dht.setup(DHTPIN, DHTesp::DHTTYPE);</code><br>Khởi động cảm biến DHT11 trên chân D4 với loại cảm biến là DHT11.</li>
+                    <li><code>for (int i = 0; i < 3; i++) { ... }</code><br>Vòng lặp cấu hình 3 nút nhấn và 3 chân đầu ra:
+                        <ul>
+                            <li><code>pinMode(btn[i], INPUT_PULLUP);</code><br>Đặt các chân nút nhấn (D1, D2, D5) ở chế độ đầu vào với điện trở kéo lên (pull-up) bên trong.</li>
+                            <li><code>attachInterrupt(digitalPinToInterrupt(btn[i]), handleBtn, FALLING);</code><br>Gắn ngắt cho các nút. Khi nút được nhấn (mức tín hiệu từ HIGH xuống LOW - FALLING), hàm <code>handleBtn</code> sẽ được gọi.</li>
+                            <li><code>pinMode(out[i], OUTPUT);</code><br>Đặt các chân đầu ra (D0, D3, D7) ở chế độ đầu ra để điều khiển thiết bị.</li>
+                        </ul>
+                    </li>
+                    <li><code>sv.attach(servoPin);</code><br>Kết nối servo motor với chân D8.</li>
+                </ul>
+                
+                <hr>
 
-void callback(char* topic, byte* payload, unsigned int length) {
-  String message = "";
-  
-  for (int i = 0; i < length; i++) {
-    message += (char)payload[i];
+                <h3>3. Hàm <code>loop()</code></h3>
+                <p>Hàm <code>loop()</code> chạy liên tục sau <code>setup()</code>, là phần chính của chương trình:</p>
+                <div class="code-block-container">
+                    <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    <pre><code class="language-cpp">void loop() {
+  ArduinoCloud.update();
+  if (millis() - timeRead > 1000) {
+    float t = dht.getTemperature();
+    temperature = t;
+    timeRead = millis();
   }
-  
-  Serial.print("Message arrived [");
-  Serial.print(topic);
-  Serial.print("]: ");
-  Serial.println(message);
-  
-  // Chuyển tiếp lệnh tới Arduino thông qua Serial
-  if (strcmp(topic, topic_light) == 0) {
-    Serial.println("L" + message);
-  }
-  else if (strcmp(topic, topic_window) == 0) {
-    Serial.println("W" + message);
-  }
-  else if (strcmp(topic, topic_water) == 0) {
-    Serial.println("P" + message);
-  }
-}
 
-void reconnect() {
-  while (!client.connected()) {
-    Serial.print("Attempting MQTT connection...");
-    
-    String clientId = "ESP8266Client-";
-    clientId += String(random(0xffff), HEX);
-    
-    if (client.connect(clientId.c_str(), mqtt_user, mqtt_password)) {
-      Serial.println("connected");
-      
-      // Đăng ký các chủ đề
-      client.subscribe(topic_light);
-      client.subscribe(topic_window);
-      client.subscribe(topic_water);
-      
-      // Gửi thông báo trạng thái kết nối
-      client.publish(topic_status, "connected");
+  if (update == 1) {
+    device1 = digitalRead(out[0]);
+    device2 = digitalRead(out[1]);
+    device3 = digitalRead(out[2]);
+    update = 0;
+  }
+
+  if (device4 != lastDevice4State) {
+    sv.attach(servoPin);
+    if (device4 == 1) {
+      sv.write(120);
     } else {
-      Serial.print("failed, rc=");
-      Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
-      delay(5000);
+      sv.write(0);
     }
+    delay(1000); 
+    sv.detach();
+    lastDevice4State = device4;
   }
-}
-
-void setup() {
-  Serial.begin(115200);
-  setup_wifi();
-  client.setServer(mqtt_server, mqtt_port);
-  client.setCallback(callback);
-}
-
-void loop() {
-  if (!client.connected()) {
-    reconnect();
-  }
-  client.loop();
-  
-  // Đọc dữ liệu từ Arduino (nếu có)
-  if (Serial.available() > 0) {
-    String data = Serial.readStringUntil('\n');
-    
-    // Gửi dữ liệu từ Arduino lên MQTT server
-    if (data.startsWith("S")) { // Status message
-      client.publish(topic_status, data.substring(1).c_str());
-    }
-  }
-}
-                            </pre>
-                        </div>
-                    </div>
-                    
-                    <div class="upload-steps">
-                        <h2>Các bước nạp code cho ESP8266</h2>
-                        
-                        <div class="step-item">
-                            <h3>Bước 1: Cài đặt Arduino IDE</h3>
-                            <p>Tải và cài đặt Arduino IDE từ trang web chính thức: <a href="https://www.arduino.cc/en/software" style="color: #66b3ff;">arduino.cc/en/software</a></p>
-                        </div>
-                        
-                        <div class="step-item">
-                            <h3>Bước 2: Cài đặt hỗ trợ cho ESP8266</h3>
-                            <p>Mở Arduino IDE, vào <strong>File > Preferences</strong> và thêm đường dẫn sau vào mục "Additional Boards Manager URLs":</p>
-                            <div class="code-block">
-                                <pre>http://arduino.esp8266.com/stable/package_esp8266com_index.json</pre>
-                            </div>
-                            <p>Sau đó, vào <strong>Tools > Board > Boards Manager</strong>, tìm và cài đặt "esp8266".</p>
-                        </div>
-                        
-                        <div class="step-item">
-                            <h3>Bước 3: Cài đặt các thư viện cần thiết</h3>
-                            <p>Vào <strong>Sketch > Include Library > Manage Libraries</strong>, tìm và cài đặt các thư viện sau:</p>
-                            <ul>
-                                <li>PubSubClient</li>
-                                <li>ESP8266WiFi (thường được cài đặt sẵn khi cài hỗ trợ ESP8266)</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="step-item">
-                            <h3>Bước 4: Kết nối ESP8266 với máy tính</h3>
-                            <p>Sử dụng cáp micro USB để kết nối ESP8266 NodeMCU với máy tính.</p>
-                            <img src="assets/img/esp8266_connect.jpg" alt="Kết nối ESP8266 với máy tính">
-                        </div>
-                        
-                        <div class="step-item">
-                            <h3>Bước 5: Cấu hình Arduino IDE</h3>
-                            <p>Trong Arduino IDE, cấu hình các tham số sau:</p>
-                            <ul>
-                                <li><strong>Board:</strong> NodeMCU 1.0 (ESP-12E Module)</li>
-                                <li><strong>Upload Speed:</strong> 115200</li>
-                                <li><strong>CPU Frequency:</strong> 80MHz</li>
-                                <li><strong>Flash Size:</strong> 4MB (FS:1MB OTA:~1019KB)</li>
-                                <li><strong>Port:</strong> Chọn cổng COM mà ESP8266 được kết nối</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="step-item">
-                            <h3>Bước 6: Nạp code</h3>
-                            <p>Sao chép code ở trên vào Arduino IDE, chỉnh sửa các thông số WiFi và MQTT theo môi trường của bạn, sau đó nhấn nút Upload để nạp code vào ESP8266.</p>
-                        </div>
-                    </div>
+}</code></pre>
                 </div>
+                <ul>
+                    <li><code>ArduinoCloud.update();</code><br>Cập nhật trạng thái giữa thiết bị và Arduino IoT Cloud, đảm bảo các biến cloud (<code>device1</code>, <code>device2</code>, v.v.) được đồng bộ.</li>
+                    <li><strong>Đọc nhiệt độ định kỳ:</strong><br>
+                        <div class="code-block-container">
+                            <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                            <pre><code class="language-cpp">if (millis() - timeRead > 1000) {
+    float t = dht.getTemperature();
+    temperature = t;
+    timeRead = millis();
+}</code></pre>
+                        </div>
+                        <p>Mỗi 1 giây (1000ms), đọc nhiệt độ từ cảm biến DHT11, gán giá trị vào biến cloud <code>temperature</code>, và cập nhật thời gian <code>timeRead</code>.</p>
+                    </li>
+                    <li><strong>Cập nhật trạng thái thiết bị:</strong><br>
+                        <div class="code-block-container">
+                            <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                            <pre><code class="language-cpp">if (update == 1) {
+    device1 = digitalRead(out[0]);
+    device2 = digitalRead(out[1]);
+    device3 = digitalRead(out[2]);
+    update = 0;
+}</code></pre>
+                        </div>
+                        <p>Nếu <code>update == 1</code> (do nút nhấn thay đổi trạng thái), đọc trạng thái các chân đầu ra (D0, D3, D7) và cập nhật lên các biến cloud tương ứng. Sau đó, đặt lại <code>update = 0</code>.</p>
+                    </li>
+                    <li><strong>Điều khiển servo khi <code>device4</code> thay đổi:</strong><br>
+                        <div class="code-block-container">
+                             <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                            <pre><code class="language-cpp">if (device4 != lastDevice4State) {
+    sv.attach(servoPin);
+    if (device4 == 1) {
+        sv.write(120);
+    } else {
+        sv.write(0);
+    }
+    delay(1000); 
+    sv.detach();
+    lastDevice4State = device4;
+}</code></pre>
+                        </div>
+                        <p>Nếu <code>device4</code> (biến cloud) thay đổi so với trạng thái trước đó:
+                        <ul>
+                            <li>Gắn lại servo vào chân D8 (<code>sv.attach(servoPin)</code>).</li>
+                            <li>Nếu <code>device4 == 1</code>, quay servo đến góc 120 độ; nếu <code>device4 == 0</code>, quay về 0 độ.</li>
+                            <li>Chờ 1 giây (<code>delay(1000)</code>) để servo hoàn tất chuyển động, sau đó ngắt servo (<code>sv.detach()</code>) để tiết kiệm năng lượng.</li>
+                            <li>Cập nhật <code>lastDevice4State</code> để theo dõi trạng thái mới.</li>
+                        </ul>
+                        </p>
+                    </li>
+                </ul>
+
+                <hr>
+
+                <h3>4. Hàm ngắt <code>handleBtn()</code></h3>
+                <p>Hàm này xử lý ngắt khi nút nhấn được kích hoạt:</p>
+                <div class="code-block-container">
+                    <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    <pre><code class="language-cpp">ICACHE_RAM_ATTR void handleBtn() {
+  if (millis() - timeDelay > 500) {
+    for (int i = 0; i < 3; i++) {
+      bool btnState = digitalRead(btn[i]);
+      if (btnState == 0) {
+        digitalWrite(out[i], !digitalRead(out[i]));
+      }
+    }
+    update = 1;
+    timeDelay = millis();
+  }
+}</code></pre>
+                </div>
+                <ul>
+                    <li><code>ICACHE_RAM_ATTR</code><br>Thuộc tính này yêu cầu hàm được lưu trong RAM để xử lý ngắt nhanh hơn trên ESP8266/ESP32.</li>
+                    <li><code>if (millis() - timeDelay > 500) { ... }</code><br>Chống dội nút: chỉ xử lý nếu đã qua 500ms kể từ lần nhấn trước, tránh tín hiệu nhiễu.</li>
+                    <li><code>for (int i = 0; i < 3; i++) { ... }</code><br>Kiểm tra từng nút (D1, D2, D5):
+                        <ul>
+                            <li><code>bool btnState = digitalRead(btn[i]);</code><br>Đọc trạng thái nút (0 khi nhấn, do dùng INPUT_PULLUP).</li>
+                            <li><code>if (btnState == 0) { digitalWrite(out[i], !digitalRead(out[i])); }</code><br>Nếu nút được nhấn, đảo trạng thái của chân đầu ra tương ứng (D0, D3, D7).</li>
+                        </ul>
+                    </li>
+                    <li><code>update = 1;</code><br>Đặt cờ <code>update</code> để báo hiệu cần cập nhật trạng thái lên cloud trong <code>loop()</code>.</li>
+                    <li><code>timeDelay = millis();</code><br>Cập nhật thời gian để chống dội cho lần nhấn tiếp theo.</li>
+                </ul>
+
+                <hr>
                 
-                <div id="arduino" class="tab-content">
-                    <div class="code-section">
-                        <h2>Code cho Arduino UNO R3</h2>
-                        <p>Arduino UNO R3 đảm nhận nhiệm vụ điều khiển trực tiếp các thiết bị phần cứng như đèn LED, động cơ servo và bơm nước.</p>
-                        
-                        <div class="code-block">
-                            <pre>
-#include <Servo.h>
+                <h3>5. Các hàm callback của cloud</h3>
+                <p>Những hàm này được gọi tự động khi các biến cloud thay đổi từ Arduino IoT Cloud:</p>
+                <ul>
+                    <li><code>void onDevice1Change() { digitalWrite(out[0], device1); }</code><br>Khi <code>device1</code> thay đổi trên cloud, cập nhật trạng thái chân D0 (HIGH hoặc LOW).</li>
+                    <li><code>void onDevice2Change() { digitalWrite(out[1], device2); }</code><br>Khi <code>device2</code> thay đổi, cập nhật trạng thái chân D3.</li>
+                    <li><code>void onDevice3Change() { digitalWrite(out[2], device3); }</code><br>Khi <code>device3</code> thay đổi, cập nhật trạng thái chân D7.</li>
+                    <li><code>void onDevice4Change() { ... }</code>
+                        <div class="code-block-container">
+                            <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                            <pre><code class="language-cpp">void onDevice4Change() {
+  if (device4 != lastDevice4State) {
+    sv.attach(servoPin);
+    if (device4 == 1) {
+      sv.write(120);
+    } else {
+      sv.write(0);
+    }
+    delay(1000);
+    sv.detach();
+    lastDevice4State = device4;
+  }
+}</code></pre>
+                        </div>
+                        <p>Tương tự như trong <code>loop()</code>, khi <code>device4</code> thay đổi, điều khiển servo quay đến 120 độ (nếu <code>device4 == 1</code>) hoặc 0 độ (nếu <code>device4 == 0</code>), sau đó ngắt servo.</p>
+                    </li>
+                    <li><code>void onTemperatureChange() { }</code><br>Hàm này hiện không làm gì, nhưng có thể được dùng để xử lý khi <code>temperature</code> thay đổi từ cloud (nếu cần).</li>
+                </ul>
+                
+                <hr>
 
-// Định nghĩa chân kết nối
-const int relay1Pin = 2;  // Đèn phòng khách
-const int relay2Pin = 3;  // Đèn phòng ngủ
-const int relay3Pin = 4;  // Bơm nước
-const int servoPin = 9;   // Servo điều khiển cửa sổ
-const int soilPin = A0;   // Cảm biến độ ẩm đất
+                <h3>6. Tóm tắt cách hoạt động</h3>
+                <p>Mã này tạo ra một hệ thống IoT với các chức năng sau:</p>
+                <ul>
+                    <li><strong>Điều khiển cục bộ qua nút nhấn:</strong> Nhấn nút (D1, D2, D5) để đảo trạng thái các thiết bị nối với D0, D3, D7.</li>
+                    <li><strong>Điều khiển từ xa qua cloud:</strong> Thay đổi <code>device1</code>, <code>device2</code>, <code>device3</code> trên cloud để bật/tắt các thiết bị, và thay đổi <code>device4</code> để điều khiển servo.</li>
+                    <li><strong>Giám sát nhiệt độ:</strong> Đọc nhiệt độ từ cảm biến DHT11 mỗi giây và cập nhật lên biến cloud <code>temperature</code>.</li>
+                    <li><strong>Điều khiển servo:</strong> Dựa trên giá trị của <code>device4</code>, servo quay đến 120 độ hoặc 0 độ, sau đó được ngắt để tiết kiệm năng lượng.</li>
+                </ul>
+                
+                <hr>
 
-Servo windowServo;
+                <h3>7. Code hoàn chỉnh</h3>
+                <p>Dưới đây là mã hoàn chỉnh cho Mô hình Smart Home:</p>
+                <div class="code-block-container">
+                    <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    <pre><code class="language-cpp">#include "thingProperties.h"
+#include &lt;DHTesp.h&gt;
+#include &lt;Servo.h&gt;
 
-// Cấu hình ngưỡng độ ẩm đất
-const int dryThreshold = 500;  // Ngưỡng đất khô cần tưới
+#define DHTPIN D4
+#define DHTTYPE DHT11
+DHTesp dht;
 
-// Biến lưu trạng thái
-bool livingRoomLight = false;
-bool bedroomLight = false;
-bool pumpActive = false;
-bool windowOpen = false;
-int soilMoisture = 0;
-
-// Hàm điều khiển đèn phòng khách
-void controlLivingRoomLight(bool state) {
-  livingRoomLight = state;
-  digitalWrite(relay1Pin, state ? LOW : HIGH);  // Relay thường đóng
-}
-
-// Hàm điều khiển đèn phòng ngủ
-void controlBedroomLight(bool state) {
-  bedroomLight = state;
-  digitalWrite(relay2Pin, state ? LOW : HIGH);  // Relay thường đóng
-}
-
-// Hàm điều khiển bơm nước
-void controlWaterPump(bool state) {
-  pumpActive = state;
-  digitalWrite(relay3Pin, state ? LOW : HIGH);  // Relay thường đóng
-}
-
-// Hàm điều khiển cửa sổ
-void controlWindow(bool open) {
-  windowOpen = open;
-  int angle = open ? 90 : 0;
-  windowServo.write(angle);
-}
-
-// Hàm đọc độ ẩm đất
-int readSoilMoisture() {
-  int value = analogRead(soilPin);
-  return map(value, 0, 1023, 100, 0);  // Chuyển đổi sang phần trăm (0%: khô, 100%: ẩm)
-}
-
-// Hàm gửi trạng thái hiện tại
-void sendStatus() {
-  String status = "S";
-  status += "L" + String(livingRoomLight ? "1" : "0");
-  status += "B" + String(bedroomLight ? "1" : "0");
-  status += "P" + String(pumpActive ? "1" : "0");
-  status += "W" + String(windowOpen ? "1" : "0");
-  status += "M" + String(soilMoisture);
-  
-  Serial.println(status);
-}
+Servo sv;
+const int btn[4] = {D1, D2, D5, D6};
+const int out[3] = {D0, D3, D7};
+const int servoPin = D8;
+unsigned long timeDelay = millis();
+unsigned long timeRead = millis();
+bool update = 0;
+int lastDevice4State = -1;
 
 void setup() {
-  // Khởi tạo Serial để giao tiếp với ESP8266
-  Serial.begin(115200);
+  Serial.begin(9600);
+  delay(1500); 
+  initProperties();
+  ArduinoCloud.begin(ArduinoIoTPreferredConnection);
+  setDebugMessageLevel(2);
+  ArduinoCloud.printDebugInfo();
+
+  dht.setup(DHTPIN, DHTesp::DHTTYPE);
+  for (int i = 0; i < 3; i++) {
+    pinMode(btn[i], INPUT_PULLUP);
+    attachInterrupt(digitalPinToInterrupt(btn[i]), handleBtn, FALLING);
+    pinMode(out[i], OUTPUT);
+  }
   
-  // Cấu hình các chân
-  pinMode(relay1Pin, OUTPUT);
-  pinMode(relay2Pin, OUTPUT);
-  pinMode(relay3Pin, OUTPUT);
-  
-  // Khởi tạo các chân relay ở trạng thái OFF (HIGH cho relay thường đóng)
-  digitalWrite(relay1Pin, HIGH);
-  digitalWrite(relay2Pin, HIGH);
-  digitalWrite(relay3Pin, HIGH);
-  
-  // Khởi tạo servo
-  windowServo.attach(servoPin);
-  windowServo.write(0);  // Đóng cửa sổ khi khởi động
-  
-  delay(1000);  // Chờ ổn định
+  sv.attach(servoPin);
 }
 
 void loop() {
-  // Đọc độ ẩm đất
-  soilMoisture = readSoilMoisture();
-  
-  // Kiểm tra tự động tưới nước khi đất khô
-  if (soilMoisture < dryThreshold && !pumpActive) {
-    controlWaterPump(true);
-    delay(3000);  // Tưới trong 3 giây
-    controlWaterPump(false);
+  ArduinoCloud.update();
+  if (millis() - timeRead > 1000) {
+    float t = dht.getTemperature();
+    temperature = t;
+    timeRead = millis();
   }
-  
-  // Kiểm tra nếu có lệnh từ ESP8266
-  if (Serial.available() > 0) {
-    String command = Serial.readStringUntil('\n');
-    
-    if (command.startsWith("L")) {  // Light command
-      int lightNum = command.substring(1, 2).toInt();
-      bool state = command.substring(2, 3).toInt() == 1;
-      
-      if (lightNum == 1) controlLivingRoomLight(state);
-      else if (lightNum == 2) controlBedroomLight(state);
-    }
-    else if (command.startsWith("W")) {  // Window command
-      bool open = command.substring(1, 2).toInt() == 1;
-      controlWindow(open);
-    }
-    else if (command.startsWith("P")) {  // Pump command
-      bool activate = command.substring(1, 2).toInt() == 1;
-      controlWaterPump(activate);
-    }
+
+  if (update == 1) {
+    device1 = digitalRead(out[0]);
+    device2 = digitalRead(out[1]);
+    device3 = digitalRead(out[2]);
+    update = 0;
   }
-  
-  // Gửi trạng thái mỗi 5 giây
-  static unsigned long lastStatusTime = 0;
-  if (millis() - lastStatusTime > 5000) {
-    sendStatus();
-    lastStatusTime = millis();
+
+  if (device4 != lastDevice4State) {
+    sv.attach(servoPin);
+    if (device4 == 1) {
+      sv.write(120);
+    } else {
+      sv.write(0);
+    }
+    delay(1000); 
+    sv.detach();
+    lastDevice4State = device4;
   }
-  
-  delay(100);  // Nhỏ delay để tránh CPU hoạt động quá tải
 }
-                            </pre>
-                        </div>
-                    </div>
-                    
-                    <div class="upload-steps">
-                        <h2>Các bước nạp code cho Arduino UNO R3</h2>
-                        
-                        <div class="step-item">
-                            <h3>Bước 1: Kết nối Arduino UNO R3 với máy tính</h3>
-                            <p>Sử dụng cáp USB-A to USB-B để kết nối Arduino UNO R3 với máy tính.</p>
-                            <img src="assets/img/arduino_connect.jpg" alt="Kết nối Arduino UNO R3 với máy tính">
-                        </div>
-                        
-                        <div class="step-item">
-                            <h3>Bước 2: Cấu hình Arduino IDE</h3>
-                            <p>Trong Arduino IDE, cấu hình các tham số sau:</p>
-                            <ul>
-                                <li><strong>Board:</strong> Arduino Uno</li>
-                                <li><strong>Port:</strong> Chọn cổng COM mà Arduino được kết nối</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="step-item">
-                            <h3>Bước 3: Cài đặt thư viện cần thiết</h3>
-                            <p>Vào <strong>Sketch > Include Library > Manage Libraries</strong>, tìm và cài đặt thư viện "Servo".</p>
-                        </div>
-                        
-                        <div class="step-item">
-                            <h3>Bước 4: Nạp code</h3>
-                            <p>Sao chép code ở trên vào Arduino IDE, sau đó nhấn nút Upload để nạp code vào Arduino UNO R3.</p>
-                        </div>
-                        
-                        <div class="step-item">
-                            <h3>Bước 5: Kiểm tra kết nối Serial</h3>
-                            <p>Sau khi nạp xong, mở Serial Monitor trong Arduino IDE (biểu tượng kính lúp ở góc phải trên) và đặt tốc độ baud rate là 115200 để kiểm tra trạng thái của Arduino.</p>
-                            <p>Bạn sẽ thấy dữ liệu trạng thái được gửi mỗi 5 giây.</p>
-                        </div>
-                        
-                        <div class="step-item">
-                            <h3>Bước 6: Kết nối Arduino với ESP8266</h3>
-                            <p>Sau khi kiểm tra riêng lẻ từng board, hãy kết nối chân TX của Arduino với chân RX của ESP8266, và chân RX của Arduino với chân TX của ESP8266 để hai vi điều khiển có thể giao tiếp với nhau.</p>
-                            <p><strong>Lưu ý:</strong> Khi kết nối hai board, hãy đảm bảo chúng có chung ground (GND).</p>
-                        </div>
-                    </div>
+
+ICACHE_RAM_ATTR void handleBtn() {
+  if (millis() - timeDelay > 500) {
+    for (int i = 0; i < 3; i++) {
+      bool btnState = digitalRead(btn[i]);
+      if (btnState == 0) {
+        digitalWrite(out[i], !digitalRead(out[i]));
+      }
+    }
+    update = 1;
+    timeDelay = millis();
+  }
+}
+
+void onDevice1Change() {
+  digitalWrite(out[0], device1);
+}
+
+void onDevice2Change() {
+  digitalWrite(out[1], device2);
+}
+
+void onDevice3Change() {
+  digitalWrite(out[2], device3);
+}
+
+void onDevice4Change() {
+  if (device4 != lastDevice4State) {
+    sv.attach(servoPin);
+    if (device4 == 1) {
+      sv.write(120);
+    } else {
+      sv.write(0);
+    }
+    delay(1000);
+    sv.detach();
+    lastDevice4State = device4;
+  }
+}
+
+void onTemperatureChange() {
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>HỆ THỐNG TƯỚI CÂY TỰ ĐỘNG</h2>
+                
+                <h3>1. Thư viện và biến toàn cục</h3>
+                <h4>Thư viện</h4>
+                <ul>
+                    <li><code>#include &lt;Wire.h&gt;</code><br>Đây là thư viện hỗ trợ giao tiếp I2C, một giao thức cho phép Arduino giao tiếp với các thiết bị ngoại vi như màn hình LCD. I2C giúp giảm số lượng chân cần thiết để kết nối.</li>
+                    <li><code>#include &lt;LiquidCrystal_I2C.h&gt;</code><br>Thư viện này cung cấp các hàm để điều khiển màn hình LCD thông qua giao tiếp I2C. Nó được thiết kế dành riêng cho các màn hình LCD tương thích với bộ điều khiển Hitachi HD44780.</li>
+                </ul>
+
+                <h4>Biến toàn cục</h4>
+                <ul>
+                    <li><code>int soil_sensor = 0;</code><br>Biến này lưu giá trị analog (từ 0 đến 1023) được đọc từ cảm biến độ ẩm đất qua chân A0. Giá trị này thể hiện mức độ ẩm của đất: giá trị thấp nghĩa là đất ẩm, giá trị cao nghĩa là đất khô.</li>
+                    <li><code>int level = 0;</code><br>Biến này lưu mức độ khô của đất, được phân loại thành 4 mức dựa trên giá trị của <code>soil_sensor</code>. Các mức này sẽ được xác định trong hàm <code>loop()</code>.</li>
+                    <li><code>LiquidCrystal_I2C lcd_1(0x27, 16, 2);</code><br>Khởi tạo một đối tượng LCD với các tham số:
+                        <ul>
+                            <li><code>0x27</code>: Địa chỉ I2C của màn hình (có thể thay đổi tùy thuộc vào phần cứng, thường được kiểm tra bằng công cụ quét I2C).</li>
+                            <li><code>16, 2</code>: Kích thước màn hình là 16 cột và 2 hàng.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <hr>
+
+                <h3>2. Hàm <code>setup()</code></h3>
+                <p>Hàm <code>setup()</code> chạy một lần duy nhất khi Arduino khởi động. Nó được dùng để thiết lập các cấu hình ban đầu.</p>
+                <h4>Khởi tạo LCD</h4>
+                <ul>
+                    <li><code>lcd_1.init();</code><br>Khởi động màn hình LCD, chuẩn bị cho việc hiển thị.</li>
+                    <li><code>lcd_1.backlight();</code><br>Bật đèn nền của màn hình LCD để nội dung hiển thị rõ ràng hơn.</li>
+                </ul>
+                <h4>Cấu hình chân</h4>
+                <ul>
+                    <li><code>pinMode(A0, INPUT);</code><br>Đặt chân A0 làm chân đầu vào để đọc giá trị analog từ cảm biến độ ẩm đất.</li>
+                    <li><code>pinMode(7, OUTPUT);</code><br>Đặt chân 7 làm chân đầu ra để điều khiển máy bơm tưới cây (ví dụ: qua một relay).</li>
+                    <li><code>pinMode(8, OUTPUT);</code><br>Đặt chân 8 làm chân đầu ra để điều khiển đèn LED báo trạng thái tưới cây.</li>
+                    <li><code>pinMode(9, OUTPUT);</code><br>Đặt chân 9 làm chân đầu ra để điều khiển đèn LED báo trạng thái ngưng tưới.</li>
+                </ul>
+                <h4>Khởi tạo Serial</h4>
+                <ul>
+                    <li><code>Serial.begin(9600);</code><br>Khởi tạo giao tiếp Serial với tốc độ truyền dữ liệu (baud rate) là 9600 bit/giây. Điều này cho phép hiển thị giá trị của cảm biến trên Serial Monitor trong IDE Arduino để kiểm tra và gỡ lỗi.</li>
+                </ul>
+
+                <hr>
+                
+                <h3>3. Hàm <code>loop()</code></h3>
+                <p>Hàm <code>loop()</code> chạy liên tục sau khi <code>setup()</code> hoàn tất. Đây là phần chính của chương trình, nơi hệ thống đọc dữ liệu, xử lý và điều khiển các thiết bị.</p>
+                <h4>Đọc giá trị từ cảm biến</h4>
+                <ul>
+                    <li><code>soil_sensor = analogRead(A0);</code><br>Đọc giá trị analog từ chân A0 (nơi cảm biến độ ẩm đất được kết nối) và lưu vào biến <code>soil_sensor</code>. Giá trị này nằm trong khoảng từ 0 (rất ẩm) đến 1023 (rất khô), tùy thuộc vào cảm biến.</li>
+                    <li><code>Serial.println(soil_sensor);</code><br>In giá trị của <code>soil_sensor</code> lên Serial Monitor để người dùng có thể theo dõi độ ẩm đất trong thời gian thực.</li>
+                </ul>
+                <h4>Xác định mức độ khô của đất</h4>
+                <p>Dựa trên giá trị của <code>soil_sensor</code>, mã phân loại độ khô của đất thành 4 mức:</p>
+                <ul>
+                    <li><code>if (soil_sensor < 420) { level = 1; }</code><br>Đất rất ẩm (giá trị dưới 420).</li>
+                    <li><code>else if (soil_sensor < 550) { level = 2; }</code><br>Đất ẩm (giá trị từ 420 đến dưới 550).</li>
+                    <li><code>else if (soil_sensor < 700) { level = 3; }</code><br>Đất khô (giá trị từ 550 đến dưới 700).</li>
+                    <li><code>else { level = 4; }</code><br>Đất rất khô (giá trị từ 700 trở lên).</li>
+                </ul>
+                <p><strong>Lưu ý:</strong> Các ngưỡng này (420, 550, 700) có thể cần được điều chỉnh dựa trên loại cảm biến và điều kiện môi trường thực tế.</p>
+                <h4>Hiển thị trên LCD</h4>
+                <ul>
+                    <li><code>lcd_1.clear();</code><br>Xóa toàn bộ nội dung hiện tại trên màn hình LCD để chuẩn bị hiển thị dữ liệu mới.</li>
+                    <li><code>lcd_1.setCursor(0, 0);</code><br>Đặt con trỏ tại cột 0, hàng 0 (hàng đầu tiên) của LCD.</li>
+                    <li><code>lcd_1.print("Do am: Muc ");</code><br>Hiển thị chuỗi "Do am: Muc " (Độ ẩm: Mức).</li>
+                    <li><code>lcd_1.print(level);</code><br>Hiển thị giá trị của <code>level</code> (từ 1 đến 4) ngay sau chuỗi trên. Ví dụ: "Do am: Muc 3".</li>
+                </ul>
+                <h4>Điều khiển máy bơm và đèn LED</h4>
+                <p>Phần này quyết định bật/tắt máy bơm và đèn LED dựa trên mức độ khô của đất:</p>
+                <ul>
+                    <li><strong>Nếu đất khô hoặc rất khô (<code>level == 3 || level == 4</code>):</strong>
+                        <ul>
+                            <li><code>digitalWrite(7, HIGH);</code> Bật máy bơm tưới cây.</li>
+                            <li><code>digitalWrite(8, HIGH);</code> Bật đèn báo tưới cây.</li>
+                            <li><code>digitalWrite(9, LOW);</code> Tắt đèn báo ngưng tưới.</li>
+                            <li><code>lcd_1.setCursor(0, 1);</code> Đặt con trỏ tại hàng thứ hai.</li>
+                            <li><code>lcd_1.print("Dang tuoi cay");</code> Hiển thị "Dang tuoi cay".</li>
+                        </ul>
+                    </li>
+                    <li><strong>Nếu đất ẩm hoặc rất ẩm (các mức còn lại):</strong>
+                        <ul>
+                            <li><code>digitalWrite(7, LOW);</code> Tắt máy bơm.</li>
+                            <li><code>digitalWrite(8, LOW);</code> Tắt đèn báo tưới cây.</li>
+                            <li><code>digitalWrite(9, HIGH);</code> Bật đèn báo ngưng tưới.</li>
+                            <li><code>lcd_1.setCursor(0, 1);</code> Đặt con trỏ tại hàng thứ hai.</li>
+                            <li><code>lcd_1.print("Tat tuoi cay");</code> Hiển thị "Tat tuoi cay".</li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4>Chờ 1 giây</h4>
+                <ul>
+                    <li><code>delay(1000);</code><br>Tạm dừng chương trình trong 1000 mili giây (1 giây) trước khi vòng lặp tiếp theo bắt đầu. Điều này giúp tránh việc cập nhật quá nhanh và cho phép hệ thống hoạt động ổn định.</li>
+                </ul>
+                
+                <hr>
+
+                <h3>4. Tóm tắt cách hoạt động</h3>
+                <p>Mã này tạo ra một hệ thống tưới cây tự động với các chức năng sau:</p>
+                <ol>
+                    <li><strong>Đọc độ ẩm đất:</strong> Sử dụng cảm biến độ ẩm kết nối với chân A0.</li>
+                    <li><strong>Phân loại mức độ khô:</strong> Chia độ ẩm thành 4 mức (rất ẩm, ẩm, khô, rất khô).</li>
+                    <li><strong>Hiển thị thông tin:</strong> Hiển thị mức độ khô và trạng thái tưới trên màn hình LCD.</li>
+                    <li><strong>Điều khiển thiết bị:</strong> Bật máy bơm và đèn báo tưới khi đất khô (mức 3 hoặc 4), tắt máy bơm và bật đèn báo ngưng tưới khi đất đủ ẩm (mức 1 hoặc 2).</li>
+                </ol>
+                
+                <hr>
+                
+                <h3>5. Code hoàn chỉnh</h3>
+                <p>Dưới đây là mã hoàn chỉnh cho Hệ thống Tưới cây tự động:</p>
+                <div class="code-block-container">
+                    <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    <pre><code class="language-cpp">#include &lt;Wire.h&gt;
+#include &lt;LiquidCrystal_I2C.h&gt;
+
+// Khai báo chân cảm biến độ ẩm đất và các biến
+int soil_sensor = 0;
+int level = 0; // Biến lưu trữ mức độ khô của đất
+
+// Khởi tạo LCD trên địa chỉ I2C 0x27
+LiquidCrystal_I2C lcd_1(0x27, 16, 2);
+
+void setup() {
+ // Khởi tạo giao tiếp I2C và Serial
+ lcd_1.init();
+ lcd_1.backlight();
+ pinMode(A0, INPUT);
+ Serial.begin(9600);
+
+ // Khai báo chân điều khiển
+ pinMode(7, OUTPUT); // Điều khiển máy bơm tưới
+ pinMode(8, OUTPUT); // Đèn báo tưới cây
+ pinMode(9, OUTPUT); // Đèn báo ngưng tưới
+}
+
+void loop() {
+ // Đọc giá trị từ cảm biến độ ẩm đất
+ soil_sensor = analogRead(A0);
+ Serial.println(soil_sensor); // Hiển thị giá trị trên Serial Monitor
+
+ // Xác định mức độ khô của đất dựa trên giá trị đo được
+ if (soil_sensor < 420) {
+   level = 1; // Mức 1: đất rất ẩm
+ } else if (soil_sensor < 550) {
+   level = 2; // Mức 2: đất ẩm
+ } else if (soil_sensor < 700) {
+   level = 3; // Mức 3: đất khô
+ } else {
+   level = 4; // Mức 4: đất rất khô
+ }
+
+ // Hiển thị mức độ khô của đất và trạng thái máy bơm trên LCD
+ lcd_1.clear();
+ lcd_1.setCursor(0, 0);
+ lcd_1.print("Do am: Muc ");
+ lcd_1.print(level);
+
+ // Điều khiển máy bơm và đèn LED
+ if (level == 3 || level == 4) { // Đất khô (mức 3 và 4) bật máy bơm
+   digitalWrite(7, HIGH); // Bật máy bơm
+   digitalWrite(8, HIGH); // Bật đèn báo tưới
+   digitalWrite(9, LOW);  // Tắt đèn báo ngưng tưới
+   lcd_1.setCursor(0, 1);
+   lcd_1.print("Dang tuoi cay");
+ } else { // Đất ẩm (mức 1 và 2) tắt máy bơm
+   digitalWrite(7, LOW);  // Tắt máy bơm
+   digitalWrite(8, LOW);  // Tắt đèn báo tưới
+   digitalWrite(9, HIGH); // Bật đèn báo ngưng tưới
+   lcd_1.setCursor(0, 1);
+   lcd_1.print("Tat tuoi cay");
+ }
+
+ delay(1000); // Chờ 1 giây trước khi cập nhật lại
+}</code></pre>
                 </div>
             </div>
         </div>
@@ -521,71 +673,23 @@ void loop() {
 
     <script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const codeSections = document.querySelectorAll('.code-section');
-            const steps = document.querySelectorAll('.step-item');
-            
-            // Animate code sections
-            codeSections.forEach((section, index) => {
+        function copyCode(button) {
+            const pre = button.nextElementSibling;
+            const code = pre.querySelector('code');
+            const textToCopy = code.innerText;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                button.innerText = 'Đã chép!';
                 setTimeout(() => {
-                    section.classList.add('animate');
-                }, 300);
+                    button.innerText = 'Copy';
+                }, 2000);
+            }).catch(err => {
+                console.error('Không thể sao chép code: ', err);
+                button.innerText = 'Lỗi';
+                 setTimeout(() => {
+                    button.innerText = 'Copy';
+                }, 2000);
             });
-            
-            // Animate steps
-            steps.forEach((step, index) => {
-                setTimeout(() => {
-                    step.classList.add('animate');
-                }, 500 + index * 150);
-            });
-            
-            // Thêm hiệu ứng khi scroll
-            const handleScroll = () => {
-                const scrollPosition = window.scrollY + window.innerHeight * 0.8;
-                
-                codeSections.forEach(section => {
-                    if (!section.classList.contains('animate')) {
-                        const sectionPosition = section.getBoundingClientRect().top + window.scrollY;
-                        if (scrollPosition > sectionPosition) {
-                            section.classList.add('animate');
-                        }
-                    }
-                });
-                
-                steps.forEach(step => {
-                    if (!step.classList.contains('animate')) {
-                        const stepPosition = step.getBoundingClientRect().top + window.scrollY;
-                        if (scrollPosition > stepPosition) {
-                            step.classList.add('animate');
-                        }
-                    }
-                });
-            };
-            
-            window.addEventListener('scroll', handleScroll);
-            handleScroll(); // Chạy ngay khi tải trang
-        });
-        
-        // Tab switching function
-        function openTab(evt, tabName) {
-            // Declare all variables
-            var i, tabcontent, tabbuttons;
-
-            // Get all elements with class="tab-content" and hide them
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove("active");
-            }
-
-            // Get all elements with class="tab-button" and remove the class "active"
-            tabbuttons = document.getElementsByClassName("tab-button");
-            for (i = 0; i < tabbuttons.length; i++) {
-                tabbuttons[i].classList.remove("active");
-            }
-
-            // Show the current tab, and add an "active" class to the button that opened the tab
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
         }
     </script>
 </body>
