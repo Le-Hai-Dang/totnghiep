@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phần 3: Nạp code cho vi điều khiển - Lê Hải Đăng</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section {
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .content-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 100px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .code-section {
+            margin: 30px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .code-section.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            overflow: auto;
+            max-height: 400px;
+            margin: 20px 0;
+            font-family: 'Courier New', Courier, monospace;
+            color: #ddd;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .upload-steps {
+            margin-top: 40px;
+        }
+        
+        .step-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .step-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .step-item h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
+        }
+        
+        .step-item img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .tab-container {
+            margin: 30px 0;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .tab-button {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border: none;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+            margin-right: 5px;
+            transition: all 0.3s;
+        }
+        
+        .tab-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-button.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .tab-content {
+            display: none;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 0 10px 10px 10px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="dots-bg"></div>
+    <div class="star-field" id="starField"></div>
+    
+    <header class="liquid-glass">
+        <div class="logo">LÊ HẢI ĐĂNG</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="index.html#about">Giới thiệu</a></li>
+                <li><a href="index.html#tutorial">Hướng dẫn</a></li>
+                <li><a href="#">Liên hệ tác giả</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="content-section">
+        <div class="content-container liquid-glass">
+            <a href="index.html#tutorial" class="back-button">← Quay lại</a>
+            <h1>Phần 3: Nạp code cho vi điều khiển</h1>
+            <p>Trong phần này, chúng ta sẽ tìm hiểu về cách nạp code cho ESP8266 và Arduino UNO R3 để điều khiển mô hình Smarthome.</p>
+            
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="openTab(event, 'esp8266')">ESP8266</button>
+                    <button class="tab-button" onclick="openTab(event, 'arduino')">Arduino UNO R3</button>
+                </div>
+                
+                <div id="esp8266" class="tab-content active">
+                    <div class="code-section">
+                        <h2>Code cho ESP8266 NodeMCU</h2>
+                        <p>ESP8266 NodeMCU đóng vai trò kết nối với Internet và điều khiển từ xa thông qua MQTT và Google Assistant.</p>
+                        
+                        <div class="code-block">
+                            <pre>
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+
+// Cấu hình WiFi
+const char* ssid = "TEN_WIFI";
+const char* password = "MAT_KHAU_WIFI";
+
+// Cấu hình MQTT
+const char* mqtt_server = "mqtt.example.com";
+const int mqtt_port = 1883;
+const char* mqtt_user = "mqtt_username";
+const char* mqtt_password = "mqtt_password";
+
+// Định nghĩa các chủ đề MQTT
+const char* topic_light = "home/light";
+const char* topic_window = "home/window";
+const char* topic_water = "home/water";
+const char* topic_status = "home/status";
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+
+void setup_wifi() {
+  delay(10);
+  Serial.println("Connecting to WiFi...");
+  
+  WiFi.begin(ssid, password);
+  
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+void callback(char* topic, byte* payload, unsigned int length) {
+  String message = "";
+  
+  for (int i = 0; i < length; i++) {
+    message += (char)payload[i];
+  }
+  
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.print("]: ");
+  Serial.println(message);
+  
+  // Chuyển tiếp lệnh tới Arduino thông qua Serial
+  if (strcmp(topic, topic_light) == 0) {
+    Serial.println("L" + message);
+  }
+  else if (strcmp(topic, topic_window) == 0) {
+    Serial.println("W" + message);
+  }
+  else if (strcmp(topic, topic_water) == 0) {
+    Serial.println("P" + message);
+  }
+}
+
+void reconnect() {
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    
+    String clientId = "ESP8266Client-";
+    clientId += String(random(0xffff), HEX);
+    
+    if (client.connect(clientId.c_str(), mqtt_user, mqtt_password)) {
+      Serial.println("connected");
+      
+      // Đăng ký các chủ đề
+      client.subscribe(topic_light);
+      client.subscribe(topic_window);
+      client.subscribe(topic_water);
+      
+      // Gửi thông báo trạng thái kết nối
+      client.publish(topic_status, "connected");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      delay(5000);
+    }
+  }
+}
+
+void setup() {
+  Serial.begin(115200);
+  setup_wifi();
+  client.setServer(mqtt_server, mqtt_port);
+  client.setCallback(callback);
+}
+
+void loop() {
+  if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
+  
+  // Đọc dữ liệu từ Arduino (nếu có)
+  if (Serial.available() > 0) {
+    String data = Serial.readStringUntil('\n');
+    
+    // Gửi dữ liệu từ Arduino lên MQTT server
+    if (data.startsWith("S")) { // Status message
+      client.publish(topic_status, data.substring(1).c_str());
+    }
+  }
+}
+                            </pre>
+                        </div>
+                    </div>
+                    
+                    <div class="upload-steps">
+                        <h2>Các bước nạp code cho ESP8266</h2>
+                        
+                        <div class="step-item">
+                            <h3>Bước 1: Cài đặt Arduino IDE</h3>
+                            <p>Tải và cài đặt Arduino IDE từ trang web chính thức: <a href="https://www.arduino.cc/en/software" style="color: #66b3ff;">arduino.cc/en/software</a></p>
+                        </div>
+                        
+                        <div class="step-item">
+                            <h3>Bước 2: Cài đặt hỗ trợ cho ESP8266</h3>
+                            <p>Mở Arduino IDE, vào <strong>File > Preferences</strong> và thêm đường dẫn sau vào mục "Additional Boards Manager URLs":</p>
+                            <div class="code-block">
+                                <pre>http://arduino.esp8266.com/stable/package_esp8266com_index.json</pre>
+                            </div>
+                            <p>Sau đó, vào <strong>Tools > Board > Boards Manager</strong>, tìm và cài đặt "esp8266".</p>
+                        </div>
+                        
+                        <div class="step-item">
+                            <h3>Bước 3: Cài đặt các thư viện cần thiết</h3>
+                            <p>Vào <strong>Sketch > Include Library > Manage Libraries</strong>, tìm và cài đặt các thư viện sau:</p>
+                            <ul>
+                                <li>PubSubClient</li>
+                                <li>ESP8266WiFi (thường được cài đặt sẵn khi cài hỗ trợ ESP8266)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="step-item">
+                            <h3>Bước 4: Kết nối ESP8266 với máy tính</h3>
+                            <p>Sử dụng cáp micro USB để kết nối ESP8266 NodeMCU với máy tính.</p>
+                            <img src="assets/img/esp8266_connect.jpg" alt="Kết nối ESP8266 với máy tính">
+                        </div>
+                        
+                        <div class="step-item">
+                            <h3>Bước 5: Cấu hình Arduino IDE</h3>
+                            <p>Trong Arduino IDE, cấu hình các tham số sau:</p>
+                            <ul>
+                                <li><strong>Board:</strong> NodeMCU 1.0 (ESP-12E Module)</li>
+                                <li><strong>Upload Speed:</strong> 115200</li>
+                                <li><strong>CPU Frequency:</strong> 80MHz</li>
+                                <li><strong>Flash Size:</strong> 4MB (FS:1MB OTA:~1019KB)</li>
+                                <li><strong>Port:</strong> Chọn cổng COM mà ESP8266 được kết nối</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="step-item">
+                            <h3>Bước 6: Nạp code</h3>
+                            <p>Sao chép code ở trên vào Arduino IDE, chỉnh sửa các thông số WiFi và MQTT theo môi trường của bạn, sau đó nhấn nút Upload để nạp code vào ESP8266.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="arduino" class="tab-content">
+                    <div class="code-section">
+                        <h2>Code cho Arduino UNO R3</h2>
+                        <p>Arduino UNO R3 đảm nhận nhiệm vụ điều khiển trực tiếp các thiết bị phần cứng như đèn LED, động cơ servo và bơm nước.</p>
+                        
+                        <div class="code-block">
+                            <pre>
+#include <Servo.h>
+
+// Định nghĩa chân kết nối
+const int relay1Pin = 2;  // Đèn phòng khách
+const int relay2Pin = 3;  // Đèn phòng ngủ
+const int relay3Pin = 4;  // Bơm nước
+const int servoPin = 9;   // Servo điều khiển cửa sổ
+const int soilPin = A0;   // Cảm biến độ ẩm đất
+
+Servo windowServo;
+
+// Cấu hình ngưỡng độ ẩm đất
+const int dryThreshold = 500;  // Ngưỡng đất khô cần tưới
+
+// Biến lưu trạng thái
+bool livingRoomLight = false;
+bool bedroomLight = false;
+bool pumpActive = false;
+bool windowOpen = false;
+int soilMoisture = 0;
+
+// Hàm điều khiển đèn phòng khách
+void controlLivingRoomLight(bool state) {
+  livingRoomLight = state;
+  digitalWrite(relay1Pin, state ? LOW : HIGH);  // Relay thường đóng
+}
+
+// Hàm điều khiển đèn phòng ngủ
+void controlBedroomLight(bool state) {
+  bedroomLight = state;
+  digitalWrite(relay2Pin, state ? LOW : HIGH);  // Relay thường đóng
+}
+
+// Hàm điều khiển bơm nước
+void controlWaterPump(bool state) {
+  pumpActive = state;
+  digitalWrite(relay3Pin, state ? LOW : HIGH);  // Relay thường đóng
+}
+
+// Hàm điều khiển cửa sổ
+void controlWindow(bool open) {
+  windowOpen = open;
+  int angle = open ? 90 : 0;
+  windowServo.write(angle);
+}
+
+// Hàm đọc độ ẩm đất
+int readSoilMoisture() {
+  int value = analogRead(soilPin);
+  return map(value, 0, 1023, 100, 0);  // Chuyển đổi sang phần trăm (0%: khô, 100%: ẩm)
+}
+
+// Hàm gửi trạng thái hiện tại
+void sendStatus() {
+  String status = "S";
+  status += "L" + String(livingRoomLight ? "1" : "0");
+  status += "B" + String(bedroomLight ? "1" : "0");
+  status += "P" + String(pumpActive ? "1" : "0");
+  status += "W" + String(windowOpen ? "1" : "0");
+  status += "M" + String(soilMoisture);
+  
+  Serial.println(status);
+}
+
+void setup() {
+  // Khởi tạo Serial để giao tiếp với ESP8266
+  Serial.begin(115200);
+  
+  // Cấu hình các chân
+  pinMode(relay1Pin, OUTPUT);
+  pinMode(relay2Pin, OUTPUT);
+  pinMode(relay3Pin, OUTPUT);
+  
+  // Khởi tạo các chân relay ở trạng thái OFF (HIGH cho relay thường đóng)
+  digitalWrite(relay1Pin, HIGH);
+  digitalWrite(relay2Pin, HIGH);
+  digitalWrite(relay3Pin, HIGH);
+  
+  // Khởi tạo servo
+  windowServo.attach(servoPin);
+  windowServo.write(0);  // Đóng cửa sổ khi khởi động
+  
+  delay(1000);  // Chờ ổn định
+}
+
+void loop() {
+  // Đọc độ ẩm đất
+  soilMoisture = readSoilMoisture();
+  
+  // Kiểm tra tự động tưới nước khi đất khô
+  if (soilMoisture < dryThreshold && !pumpActive) {
+    controlWaterPump(true);
+    delay(3000);  // Tưới trong 3 giây
+    controlWaterPump(false);
+  }
+  
+  // Kiểm tra nếu có lệnh từ ESP8266
+  if (Serial.available() > 0) {
+    String command = Serial.readStringUntil('\n');
+    
+    if (command.startsWith("L")) {  // Light command
+      int lightNum = command.substring(1, 2).toInt();
+      bool state = command.substring(2, 3).toInt() == 1;
+      
+      if (lightNum == 1) controlLivingRoomLight(state);
+      else if (lightNum == 2) controlBedroomLight(state);
+    }
+    else if (command.startsWith("W")) {  // Window command
+      bool open = command.substring(1, 2).toInt() == 1;
+      controlWindow(open);
+    }
+    else if (command.startsWith("P")) {  // Pump command
+      bool activate = command.substring(1, 2).toInt() == 1;
+      controlWaterPump(activate);
+    }
+  }
+  
+  // Gửi trạng thái mỗi 5 giây
+  static unsigned long lastStatusTime = 0;
+  if (millis() - lastStatusTime > 5000) {
+    sendStatus();
+    lastStatusTime = millis();
+  }
+  
+  delay(100);  // Nhỏ delay để tránh CPU hoạt động quá tải
+}
+                            </pre>
+                        </div>
+                    </div>
+                    
+                    <div class="upload-steps">
+                        <h2>Các bước nạp code cho Arduino UNO R3</h2>
+                        
+                        <div class="step-item">
+                            <h3>Bước 1: Kết nối Arduino UNO R3 với máy tính</h3>
+                            <p>Sử dụng cáp USB-A to USB-B để kết nối Arduino UNO R3 với máy tính.</p>
+                            <img src="assets/img/arduino_connect.jpg" alt="Kết nối Arduino UNO R3 với máy tính">
+                        </div>
+                        
+                        <div class="step-item">
+                            <h3>Bước 2: Cấu hình Arduino IDE</h3>
+                            <p>Trong Arduino IDE, cấu hình các tham số sau:</p>
+                            <ul>
+                                <li><strong>Board:</strong> Arduino Uno</li>
+                                <li><strong>Port:</strong> Chọn cổng COM mà Arduino được kết nối</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="step-item">
+                            <h3>Bước 3: Cài đặt thư viện cần thiết</h3>
+                            <p>Vào <strong>Sketch > Include Library > Manage Libraries</strong>, tìm và cài đặt thư viện "Servo".</p>
+                        </div>
+                        
+                        <div class="step-item">
+                            <h3>Bước 4: Nạp code</h3>
+                            <p>Sao chép code ở trên vào Arduino IDE, sau đó nhấn nút Upload để nạp code vào Arduino UNO R3.</p>
+                        </div>
+                        
+                        <div class="step-item">
+                            <h3>Bước 5: Kiểm tra kết nối Serial</h3>
+                            <p>Sau khi nạp xong, mở Serial Monitor trong Arduino IDE (biểu tượng kính lúp ở góc phải trên) và đặt tốc độ baud rate là 115200 để kiểm tra trạng thái của Arduino.</p>
+                            <p>Bạn sẽ thấy dữ liệu trạng thái được gửi mỗi 5 giây.</p>
+                        </div>
+                        
+                        <div class="step-item">
+                            <h3>Bước 6: Kết nối Arduino với ESP8266</h3>
+                            <p>Sau khi kiểm tra riêng lẻ từng board, hãy kết nối chân TX của Arduino với chân RX của ESP8266, và chân RX của Arduino với chân TX của ESP8266 để hai vi điều khiển có thể giao tiếp với nhau.</p>
+                            <p><strong>Lưu ý:</strong> Khi kết nối hai board, hãy đảm bảo chúng có chung ground (GND).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const codeSections = document.querySelectorAll('.code-section');
+            const steps = document.querySelectorAll('.step-item');
+            
+            // Animate code sections
+            codeSections.forEach((section, index) => {
+                setTimeout(() => {
+                    section.classList.add('animate');
+                }, 300);
+            });
+            
+            // Animate steps
+            steps.forEach((step, index) => {
+                setTimeout(() => {
+                    step.classList.add('animate');
+                }, 500 + index * 150);
+            });
+            
+            // Thêm hiệu ứng khi scroll
+            const handleScroll = () => {
+                const scrollPosition = window.scrollY + window.innerHeight * 0.8;
+                
+                codeSections.forEach(section => {
+                    if (!section.classList.contains('animate')) {
+                        const sectionPosition = section.getBoundingClientRect().top + window.scrollY;
+                        if (scrollPosition > sectionPosition) {
+                            section.classList.add('animate');
+                        }
+                    }
+                });
+                
+                steps.forEach(step => {
+                    if (!step.classList.contains('animate')) {
+                        const stepPosition = step.getBoundingClientRect().top + window.scrollY;
+                        if (scrollPosition > stepPosition) {
+                            step.classList.add('animate');
+                        }
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Chạy ngay khi tải trang
+        });
+        
+        // Tab switching function
+        function openTab(evt, tabName) {
+            // Declare all variables
+            var i, tabcontent, tabbuttons;
+
+            // Get all elements with class="tab-content" and hide them
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+
+            // Get all elements with class="tab-button" and remove the class "active"
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phần 2: Thiết kế phần cứng - Lê Hải Đăng</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section {
+            padding: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .content-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 100px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+        }
+        
+        h1, h2, h3 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .design-section {
+            margin-top: 30px;
+        }
+        
+        .image-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .image-caption {
+            color: #aaa;
+            font-style: italic;
+            text-align: center;
+        }
+        
+        .view-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .view-section:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="dots-bg"></div>
+    <div class="star-field" id="starField"></div>
+    
+    <header class="liquid-glass">
+        <div class="logo">LÊ HẢI ĐĂNG</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="index.html#about">Giới thiệu</a></li>
+                <li><a href="index.html#tutorial">Hướng dẫn</a></li>
+                <li><a href="#">Liên hệ tác giả</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="content-section">
+        <div class="content-container liquid-glass">
+            <a href="index.html#tutorial" class="back-button">← Quay lại</a>
+            
+            <p>Sau khi có các dụng cụ, linh kiện cần thiết, bạn hãy tham khảo sơ đồ mạch và thiết kế như sau:</p>
+            
+            <div class="section">
+                <h1>MÔ HÌNH SMART HOME</h1>
+                
+                <div class="design-section">
+                    <h2>Sơ đồ mạch:</h2>
+                    <div class="image-container">
+                        <img src="assets/img/hinh8.png" alt="Sơ đồ mạch Smart Home">
+                    </div>
+                </div>
+                
+                <div class="design-section">
+                    <h2>Thiết kế mô hình:</h2>
+                    
+                    <div class="view-section">
+                        <h3>1. Góc nhìn ngang trực diện</h3>
+                        <div class="image-container">
+                            <img src="assets/img/hinh9.png" alt="Góc nhìn ngang trực diện">
+                        </div>
+                    </div>
+                    
+                    <div class="view-section">
+                        <h3>2. Góc nhìn từ dưới lên trên</h3>
+                        <div class="image-container">
+                            <img src="assets/img/hinh10.png" alt="Góc nhìn từ dưới lên trên">
+                        </div>
+                    </div>
+                    
+                    <div class="view-section">
+                        <h3>3. Góc nhìn từ trên xuống</h3>
+                        <div class="image-container">
+                            <img src="assets/img/hinh11.png" alt="Góc nhìn từ trên xuống">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h1>HỆ THỐNG TƯỚI CÂY</h1>
+                
+                <div class="design-section">
+                    <h2>Sơ đồ mạch</h2>
+                    <div class="image-container">
+                        <img src="assets/img/hinh12.png" alt="Sơ đồ mạch hệ thống tưới cây">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html> 

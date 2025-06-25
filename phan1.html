@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phần 1: Chuẩn bị linh kiện - Lê Hải Đăng</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-section {
+            padding: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .content-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 100px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            /* Xóa hiệu ứng hover */
+            /*background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);*/
+        }
+        
+        h1, h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            color: #ddd;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        a {
+            color: #66b3ff;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            /* Xóa hiệu ứng hover */
+            /*text-decoration: underline;*/
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .component {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .component:last-child {
+            border-bottom: none;
+        }
+        
+        .component h3 {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        .extra-materials {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .extra-materials ul {
+            margin-left: 20px;
+            color: #ddd;
+        }
+        
+        .extra-materials li {
+            margin-bottom: 8px;
+        }
+        
+        .software {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dots-bg"></div>
+    <div class="star-field" id="starField"></div>
+    
+    <header class="liquid-glass">
+        <div class="logo">LÊ HẢI ĐĂNG</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="index.html#about">Giới thiệu</a></li>
+                <li><a href="index.html#tutorial">Hướng dẫn</a></li>
+                <li><a href="#">Liên hệ tác giả</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="content-section">
+        <div class="content-container liquid-glass">
+            <a href="index.html#tutorial" class="back-button">← Quay lại</a>
+            
+            <div class="section">
+                <h1>1. Phần cứng</h1>
+                
+                <div class="component">
+                    <h3>Arduino Uno R3</h3>
+                    <p>Đây là một mạch vi điều khiển phổ biến và dễ sử dụng. Nó được sử dụng làm chip điều khiển chính cho hệ thống tưới cây tự động, có chức năng xử lý tín hiệu từ cảm biến độ ẩm đất, điều khiển rơ-le để bật/tắt máy bơm nước, và hiển thị thông tin lên màn hình LCD.</p>
+                    <p>Bạn có thể mua thông qua link: <a href="https://hshop.vn/arduino-uno-r3" target="_blank">https://hshop.vn/arduino-uno-r3</a></p>
+                </div>
+                
+                <div class="component">
+                    <h3>ESP8266</h3>
+                    <p>Đây là một module Wifi SoC với thiết kế dễ sử dụng và đặc biệt là có thể lập trình trực tiếp bằng trình biên dịch của Arduino. ESP8266 được sử dụng làm nền tảng điều khiển trung tâm cho mô hình nhà thông minh, cho phép kết nối, thu thập dữ liệu và điều khiển qua sóng Wifi, đặc biệt quan trọng cho các ứng dụng IoT.</p>
+                    <p>Bạn có thể mua thông qua link: <a href="https://hshop.vn/kit-rf-thu-phat-wifi-esp8266-nodemcu-lua-v3-ch340" target="_blank">https://hshop.vn/kit-rf-thu-phat-wifi-esp8266-nodemcu-lua-v3-ch340</a></p>
+                </div>
+                
+                <div class="component">
+                    <h3>Mạch Relay KY-019 5VDC</h3>
+                    <p>Mạch này có kích thước nhỏ gọn, giá thành rẻ và được sử dụng để đóng ngắt thiết bị AC hoặc DC12. Trong hệ thống tưới cây tự động, rơ-le nhận tín hiệu từ Arduino để bật/tắt bơm nước tùy theo độ ẩm đất.</p>
+                    <p>Bạn có thể mua thông qua link: <a href="https://hshop.vn/module-1-relay-5vdc-ky-019" target="_blank">https://hshop.vn/module-1-relay-5vdc-ky-019</a></p>
+                </div>
+                
+                <div class="component">
+                    <h3>Đầu dò cảm biến độ ẩm đất (Soil Moisture Sensor Probe)</h3>
+                    <p>Dùng để đo độ ẩm của đất và gửi tín hiệu analog về Arduino. Đây là thành phần cốt lõi của hệ thống tưới cây tự động dựa trên độ ẩm đất.</p>
+                    <p>Bạn có thể mua thông qua link: <a href="https://hshop.vn/cam-bien-do-am-dat-2" target="_blank">https://hshop.vn/cam-bien-do-am-dat-2</a></p>
+                </div>
+                
+                <div class="component">
+                    <h3>Động cơ bơm chìm 5VDC (Mini Water Pump 5VDC)</h3>
+                    <p>Đây là động cơ bơm chìm có kích thước nhỏ gọn, có khả năng chống nước và hoạt động khi ngâm chìm trong nước. Nó được sử dụng để bơm nước trong mô hình tưới cây tự động.</p>
+                    <p>Bạn có thể mua thông qua link: <a href="https://hshop.vn/dong-co-bom-chim-mini-5vdc" target="_blank">https://hshop.vn/dong-co-bom-chim-mini-5vdc</a></p>
+                </div>
+                
+                <div class="component">
+                    <h3>Mạch hiển thị MKE-M07 LCD1602 I2C module</h3>
+                    <p>Dùng để hiển thị thông tin dưới dạng ký tự (2 dòng, mỗi dòng 16 ký tự)16. Trong hệ thống tưới cây tự động, nó hiển thị thông tin về độ ẩm đất và trạng thái hệ thống tưới. Việc tích hợp bộ chuyển đổi giao tiếp I2C giúp dễ dàng kết nối với các mạch điều khiển trung tâm.</p>
+                    <p>Bạn có thể mua thông qua link: <a href="https://hshop.vn/mach-hien-thi-mkl-m07-lcd1602-i2c-module" target="_blank">https://hshop.vn/mach-hien-thi-mkl-m07-lcd1602-i2c-module</a></p>
+                </div>
+                
+                <div class="component">
+                    <h3>LED</h3>
+                    <p>Đây là loại đèn LED đơn được sử dụng phổ biến trong các mạch điện, mạch trang trí và làm đèn báo hiển thị. Trong mô hình nhà thông minh, 3 đèn LED được sử dụng để chiếu sáng mô hình.</p>
+                    <p>Bạn có thể mua thông qua link: <a href="https://hshop.vn/bo-3-loai-led-mau-5mm-thong-dung-3-kind-5mm-color-led" target="_blank">https://hshop.vn/bo-3-loai-led-mau-5mm-thong-dung-3-kind-5mm-color-led</a></p>
+                </div>
+                
+                <div class="component">
+                    <h3>Điện trở</h3>
+                    <p>Điện trở là linh kiện thụ động có chức năng cản trở dòng điện trong mạch điện, được sử dụng để điều chỉnh mức điện áp, hạn chế dòng điện, phân chia điện áp. Chúng cần thiết để bảo vệ các linh kiện khác như LED khỏi dòng điện quá cao.</p>
+                    <p>Bạn có thể mua thông qua link: <a href="https://hshop.vn/bo-30-loai-dien-tro-1-4w-1-thong-dung-10-1m-ohm-30-kind-1-4w-resistance" target="_blank">https://hshop.vn/bo-30-loai-dien-tro-1-4w-1-thong-dung-10-1m-ohm-30-kind-1-4w-resistance</a></p>
+                </div>
+                
+                <div class="component">
+                    <h3>Động cơ RC Servo 9g</h3>
+                    <p>Đây là động cơ servo nhỏ, có tốc độ phản ứng nhanh và được điều khiển góc quay bằng phương pháp điều độ rộng xung PWM. Trong mô hình nhà thông minh, nó được sử dụng để điều khiển đóng/mở cửa sổ.</p>
+                    <p>Bạn có thể mua thông qua link: <a href="https://hshop.vn/dong-co-rc-servo-9g" target="_blank">https://hshop.vn/dong-co-rc-servo-9g</a></p>
+                </div>
+                
+                <div class="component">
+                    <h3>Cảm biến DHT11</h3>
+                    <p>Được sử dụng để đo nhiệt độ và độ ẩm môi trường, sau đó gửi dữ liệu về ESP8266 để xử lý.</p>
+                    <p>Bạn có thể mua thông qua link: <a href="https://hshop.vn/cam-bien-do-am-nhiet-do-dht11-ra-chan" target="_blank">https://hshop.vn/cam-bien-do-am-nhiet-do-dht11-ra-chan</a></p>
+                </div>
+                
+                <div class="component">
+                    <h3>Nút nhấn</h3>
+                    <p>Nút nhấn được sử dụng để điều khiển trực tiếp các thiết bị trong mô hình nhà thông minh.</p>
+                    <p>Bạn có thể mua thông qua link: <a href="https://hshop.vn/bo-5-loai-cong-tac-nhan-thong-dung-5-kind-tact-switch-button" target="_blank">https://hshop.vn/bo-5-loai-cong-tac-nhan-thong-dung-5-kind-tact-switch-button</a></p>
+                </div>
+                <div class="component">
+                   
+                    <h3>Các linh kiện sử dụng cho mô hình Smart Home</h3>
+                    <img src="assets/img/hinh6.png" alt="Các linh kiện sử dụng cho mô hình Smart Home">
+                </div>
+                <div class="component">
+                    <h3>Các linh kiện sử dụng cho hệ thống tưới cây tự động</h3>
+                    <img src="assets/img/hinh6.png" alt="Các linh kiện sử dụng cho mô hình Smart Home">
+                </div>
+                
+                <div class="extra-materials">
+                    <h3>Ngoài ra, để làm mô hình bạn cần chuẩn bị thêm:</h3>
+                    <ul>
+                        <li>Tấm nhựa mica (khoảng 4 tấm kích cỡ 30x30)</li>
+                        <li>Keo dán mica</li>
+                        <li>Fomex (khoảng 8 tấm)</li>
+                        <li>Keo silicone</li>
+                        <li>Súng bắn keo</li>
+                        <li>Dao, kéo</li>
+                        <li>Sơn màu</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h1>2. Phần mềm</h1>
+                
+                <div class="software">
+                    <h3>Arduino IDE</h3>
+                    <p>Đây là một phần mềm mã nguồn mở chính thức của Arduino, được sử dụng để viết và biên dịch mã (sketch) thành file Hex, sau đó tải lên bộ vi điều khiển trên bo mạch Arduino. Nó giúp cho việc lập trình và nạp code trở nên dễ dàng.</p>
+                    <p>Phần mềm này là mã nguồn mở và có thể tải về miễn phí từ trang web chính thức của Arduino: <a href="https://arduinokit.vn/huong-dan-cai-dat-arduino-ide/" target="_blank">https://arduinokit.vn/huong-dan-cai-dat-arduino-ide/</a></p>
+                </div>
+                
+                <div class="software">
+                    <h3>Arduino Cloud</h3>
+                    <p>Đây là một nền tảng đám mây toàn diện để phát triển các dự án Arduino và kết nối chúng với thế giới. Nó cung cấp một môi trường phát triển tích hợp (IDE), dịch vụ đám mây để đồng bộ hóa dữ liệu, công cụ đồ họa (bảng điều khiển) để kiểm soát và giám sát các bo mạch. Arduino Cloud cho phép bạn tạo thiết bị ảo (Thing), tạo biến để đồng bộ hóa dữ liệu và thiết kế giao diện điều khiển (Dashboard) cho dự án.</p>
+                    <p>Truy cập trang web <a href="https://cloud.arduino.cc/" target="_blank">https://cloud.arduino.cc/</a> và tạo tài khoản.</p>
+                </div>
+                
+                <div class="software">
+                    <h3>IoT Remote</h3>
+                    <p>Đây là ứng dụng di động chính thức của Arduino để kiểm soát và giám sát các dự án Internet of Things từ bất cứ đâu. Nó cho phép bạn tương tác với các bảng thông tin (dashboard) đã tạo trên Arduino Cloud từ điện thoại di động.</p>
+                    <p>Ứng dụng này có thể tải về từ các kho ứng dụng di động (Google Play Store hoặc Apple App Store) và đăng nhập bằng tài khoản Arduino Cloud của bạn.</p>
+                </div>
+                
+                <div class="software">
+                    <h3>Google Home</h3>
+                    <p>Ứng dụng Google Home giúp tạo dựng một ngôi nhà thông minh được sắp xếp hiệu quả hơn và được cá nhân hoá nhiều hơn. Nó cho phép bạn thiết lập, quản lý và điều khiển các thiết bị nhà thông minh tương thích, bao gồm cả các thiết bị trong mô hình này, thông qua ứng dụng hoặc lệnh giọng nói khi kết nối với Google Assistant.</p>
+                    <p>Bạn có thể tải về từ các kho ứng dụng di động (Google Play Store hoặc Apple App Store) và đăng nhập bằng tài khoản Google của bạn.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html> 
