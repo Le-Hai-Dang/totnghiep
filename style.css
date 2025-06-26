@@ -256,6 +256,7 @@ nav ul li a.active {
     transition: transform 0.3s ease;
     opacity: 0;
     animation: scaleIn 1.2s forwards 1.5s, glowPulse 3s infinite 2.5s;
+    object-fit: contain;
 }
 
 .model-image:hover {
@@ -926,7 +927,7 @@ nav ul li a.active {
 
 .about-content {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 40px;
 }
 
@@ -944,19 +945,29 @@ nav ul li a.active {
 .about-image {
     flex: 1;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
 }
 
 .about-image img {
-    width: 90%;
-    max-width: 400px;
-    margin: 0 auto;
-    display: block;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: none; /* Ẩn style mặc định để sử dụng class cụ thể */
 }
 
-.about-image img:hover {
-    /* Eliminado el efecto de hover */
+/* Style cho ảnh tác giả */
+.about-image .author-image {
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    object-fit: contain; /* Giữ nguyên tỷ lệ ảnh */
+    max-width: 100%;
+    max-height: 400px;
+    background: transparent;
 }
 
 .image-caption {
@@ -965,7 +976,7 @@ nav ul li a.active {
     color: #E1F5FE;
     margin-top: 15px;
     font-style: italic;
-    max-width: 90%;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
     line-height: 1.4;
@@ -1483,8 +1494,255 @@ nav ul li a.active {
     will-change: transform, opacity;
 }
 
-/* Tối ưu hiệu ứng bóng cho mobile */
+/* Media Queries cho Responsive Design */
+
+/* Màn hình lớn */
+@media (min-width: 1440px) {
+    .main-container, .about-container, .tutorial-steps-container, .demo-container, .contact-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .main-title {
+        font-size: 54px;
+    }
+    
+    .about-text p, .step-content p, .demo-description {
+        font-size: 20px;
+        line-height: 1.7;
+    }
+    
+    .step-content h2 {
+        font-size: 42px;
+    }
+}
+
+/* Tablet lớn */
+@media (max-width: 992px) {
+    header {
+        padding: 15px 30px;
+        margin: 20px 30px !important;
+        width: calc(100% - 60px) !important;
+    }
+    
+    .logo {
+        font-size: 28px;
+    }
+    
+    nav ul li a {
+        font-size: 16px;
+    }
+    
+    .main-title {
+        font-size: 38px;
+        padding: 20px;
+    }
+    
+    .about-content {
+        gap: 30px;
+    }
+    
+    .step-content h2 {
+        font-size: 32px;
+    }
+    
+    .step-image {
+        width: 300px;
+    }
+    
+    .about-section, .tutorial-section, .demo-section, .contact-section {
+        padding: 60px 40px;
+    }
+}
+
+/* Tablet nhỏ & Mobile lớn */
 @media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px;
+        margin: 15px 20px !important;
+        width: calc(100% - 40px) !important;
+    }
+    
+    .logo {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    nav {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    nav ul li {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    
+    nav ul li a {
+        font-size: 14px;
+    }
+    
+    nav ul li a:after {
+        margin-left: 10px;
+    }
+    
+    .main-container {
+        flex-direction: column;
+        padding: 15px;
+        margin-top: 120px;
+    }
+    
+    .left-section {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .main-title {
+        font-size: 28px;
+        padding: 15px;
+    }
+
+    .model-image {
+        max-width: 100%;
+    }
+    
+    .title-container {
+        height: 300px;
+    }
+    
+    .icon {
+        transform: scale(0.7);
+    }
+    
+    /* Điều chỉnh vị trí center cho các orbit trên mobile */
+    .icon-center {
+        top: calc(50% - 150px) !important;
+    }
+
+    .about-section {
+        padding: 40px 15px;
+    }
+    
+    .about-container {
+        padding: 20px 15px;
+    }
+    
+    .about-content {
+        flex-direction: column;
+    }
+    
+    .about-title h2 {
+        font-size: 28px;
+    }
+    
+    .about-text p {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+    
+    .tutorial-section {
+        padding: 40px 15px;
+    }
+    
+    .section-title h2 {
+        font-size: 28px;
+    }
+    
+    .tutorial-steps-container {
+        gap: 40px;
+    }
+    
+    .step-content {
+        padding: 25px 20px;
+        height: auto;
+    }
+    
+    .step-content h2 {
+        font-size: 22px;
+        padding-left: 10px;
+    }
+    
+    .step-content p {
+        font-size: 14px;
+        line-height: 1.4;
+        padding-left: 10px;
+        margin: 0 0 120px 0;
+        max-width: 100%;
+    }
+    
+    .step-number {
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+        top: -15px;
+        left: -10px;
+    }
+    
+    .step-image {
+        position: absolute;
+        right: auto;
+        top: auto;
+        left: 50%;
+        bottom: 20px;
+        transform: translateX(-50%);
+        width: 250px;
+        height: 110px;
+    }
+    
+    .demo-section {
+        padding: 40px 15px;
+    }
+    
+    .demo-container {
+        padding: 20px 15px;
+    }
+    
+    .demo-container h3 {
+        font-size: 22px;
+    }
+    
+    .video-container iframe {
+        width: 100%;
+        height: 250px;
+    }
+    
+    .demo-description {
+        font-size: 15px;
+        max-width: 95%;
+    }
+    
+    .contact-section {
+        padding: 40px 15px;
+    }
+    
+    .contact-container {
+        padding: 20px 15px;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        padding: 15px 10px;
+    }
+    
+    .contact-text {
+        text-align: center;
+    }
+    
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    /* Tối ưu hiệu ứng bóng cho mobile */
     .liquid-glass {
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
@@ -1497,6 +1755,163 @@ nav ul li a.active {
     .about-image img,
     .model-image {
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Điều chỉnh animation orbit trên mobile */
+    @keyframes orbit1 {
+        0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+    }
+    
+    @keyframes orbit2 {
+        0% { transform: rotate(0deg) translateX(70px) translateY(20px) rotate(0deg); }
+        100% { transform: rotate(-360deg) translateX(70px) translateY(20px) rotate(360deg); }
+    }
+    
+    @keyframes orbit3 {
+        0% { transform: rotate(0deg) translateX(120px) translateY(-15px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(120px) translateY(-15px) rotate(-360deg); }
+    }
+    
+    @keyframes orbit4 {
+        0% { transform: rotate(0deg) translateX(80px) translateY(-25px) rotate(0deg); }
+        100% { transform: rotate(-360deg) translateX(80px) translateY(-25px) rotate(360deg); }
+    }
+    
+    @keyframes orbit5 {
+        0% { transform: rotate(0deg) translateX(130px) translateY(5px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(130px) translateY(5px) rotate(-360deg); }
+    }
+    
+    @keyframes orbit6 {
+        0% { transform: rotate(0deg) translateX(100px) translateY(30px) rotate(0deg); }
+        100% { transform: rotate(-360deg) translateX(100px) translateY(30px) rotate(360deg); }
+    }
+}
+
+/* Mobile nhỏ */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 20px;
+    }
+    
+    nav ul li {
+        margin: 3px;
+    }
+    
+    nav ul li a {
+        font-size: 12px;
+    }
+    
+    nav ul li a:after {
+        margin-left: 6px;
+    }
+    
+    .main-title {
+        font-size: 24px;
+        padding: 10px;
+    }
+    
+    .title-container {
+        height: 250px;
+    }
+    
+    /* Ẩn một số icon bay quanh để giảm phức tạp trên màn hình nhỏ */
+    .icon.orbit3, .icon.orbit6 {
+        display: none;
+    }
+    
+    .main-container {
+        margin-top: 110px;
+    }
+    
+    .section-title h2, .about-title h2 {
+        font-size: 24px;
+    }
+    
+    .step-content h2 {
+        font-size: 20px;
+    }
+    
+    .step-content p {
+        font-size: 13px;
+        margin: 0 0 100px 0;
+    }
+    
+    .step-image {
+        width: 200px;
+        height: 90px;
+    }
+    
+    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        top: -12px;
+        left: -8px;
+    }
+    
+    .video-container iframe {
+        height: 200px;
+    }
+    
+    .about-text p, .demo-description {
+        font-size: 14px;
+    }
+    
+    .contact-text h4 {
+        font-size: 16px;
+    }
+    
+    .contact-text p {
+        font-size: 14px;
+    }
+    
+    .contact-icon {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Thiết bị có chiều dọc như điện thoại khi xoay ngang */
+@media (max-height: 500px) and (orientation: landscape) {
+    header {
+        padding: 10px 20px;
+    }
+    
+    .main-container {
+        min-height: auto;
+        padding: 100px 20px 30px;
+    }
+    
+    .title-container {
+        height: auto;
+        min-height: 200px;
+    }
+    
+    .about-section, .tutorial-section, .demo-section, .contact-section {
+        padding: 30px 15px;
+    }
+    
+    /* Điều chỉnh các orbit nhỏ hơn */
+    @keyframes orbit1 {
+        0% { transform: rotate(0deg) translateX(80px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+    }
+    
+    @keyframes orbit2 {
+        0% { transform: rotate(0deg) translateX(60px) translateY(15px) rotate(0deg); }
+        100% { transform: rotate(-360deg) translateX(60px) translateY(15px) rotate(360deg); }
+    }
+    
+    @keyframes orbit4 {
+        0% { transform: rotate(0deg) translateX(70px) translateY(-15px) rotate(0deg); }
+        100% { transform: rotate(-360deg) translateX(70px) translateY(-15px) rotate(360deg); }
+    }
+    
+    @keyframes orbit5 {
+        0% { transform: rotate(0deg) translateX(90px) translateY(5px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(90px) translateY(5px) rotate(-360deg); }
     }
 }
 
