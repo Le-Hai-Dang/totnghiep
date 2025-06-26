@@ -79,17 +79,17 @@ document.addEventListener('mousemove', (e) => {
     if (mouseMoveThrottleId) return;
     
     mouseMoveThrottleId = requestAnimationFrame(() => {
-        const elements = document.querySelectorAll('.liquid-glass');
-        
-        elements.forEach(element => {
-            const rect = element.getBoundingClientRect();
+    const elements = document.querySelectorAll('.liquid-glass');
+    
+    elements.forEach(element => {
+        const rect = element.getBoundingClientRect();
             if (!isElementInViewport(rect)) return; // Bỏ qua các element không trong viewport
             
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            element.style.setProperty('--mouse-x', `${x}px`);
-            element.style.setProperty('--mouse-y', `${y}px`);
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        element.style.setProperty('--mouse-x', `${x}px`);
+        element.style.setProperty('--mouse-y', `${y}px`);
         });
         
         mouseMoveThrottleId = null;
@@ -154,7 +154,7 @@ const sectionObserver = new IntersectionObserver(
     },
     { threshold: 0.2 } // Khi phần tử hiển thị 20% trong viewport
 );
-
+    
 // Đăng ký các phần tử cần theo dõi với Intersection Observer
 function setupScrollAnimations() {
     const elements = [
@@ -194,8 +194,8 @@ function setupMenuObserver() {
             updateActiveMenu('home');
         }
     }, { passive: true });
-}
-
+    }
+    
 // Cập nhật menu active
 function updateActiveMenu(currentSectionId) {
     const navLinks = document.querySelectorAll('header nav ul li a');
