@@ -1138,6 +1138,41 @@ nav ul li a.active {
     }
 }
 
+/* Tablet (iPad Mini) */
+@media (min-width: 768px) and (max-width: 834px) {
+    .about-image {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .about-image .author-image {
+        margin: 0 auto;
+        display: block;
+        max-width: 90%;
+        height: auto;
+    }
+    
+    .image-caption {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .about-text {
+        width: 100%;
+        text-align: center;
+    }
+}
+
 /* Tutorial Section Styles */
 .tutorial-section {
     padding: 80px 40px;
