@@ -5,12 +5,32 @@
     font-family: Arial, sans-serif;
 }
 
-body {
+body, html {
     background: linear-gradient(135deg, #0b1030 0%, #1a237e 100%);
-    color: white;
-    overflow-x: hidden;
+    background-attachment: fixed;
     min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    color: white;
     position: relative;
+}
+
+/* Đảm bảo backdrop-filter hoạt động trên Safari */
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    .liquid-glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+    }
+}
+
+/* Fallback cho trình duyệt không hỗ trợ backdrop-filter */
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    .liquid-glass {
+        background: rgba(30, 40, 70, 0.8);
+    }
 }
 
 /* Liquid Glass Common Styles */
@@ -371,7 +391,9 @@ nav ul li a.active {
 }
 
 .dots-bg {
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
@@ -2056,5 +2078,49 @@ nav ul li a.active {
             width: 20px;
             opacity: 0.8;
         }
+    }
+}
+
+/* Đảm bảo các trang con có cùng màu nền */
+.content-section {
+    background: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.content-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Đảm bảo dots-bg và star-field hiển thị đúng */
+.dots-bg, .star-field {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Cải thiện hiển thị trên Safari */
+@media not all and (min-resolution:.001dpcm) { 
+    @supports (-webkit-appearance:none) {
+        body, html {
+            background-color: #0b1030;
+        }
+        
+        .liquid-glass {
+            background-color: rgba(30, 40, 70, 0.8);
+        }
+    }
+}
+
+/* Sửa lỗi hiển thị trên Chrome và Edge cho mobile */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    body, html {
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 }
