@@ -997,6 +997,22 @@ nav ul li a.active {
         0% { transform: rotate(0deg) translateX(100px) translateY(30px) rotate(0deg); }
         100% { transform: rotate(-360deg) translateX(100px) translateY(30px) rotate(360deg); }
     }
+    
+    .step-image img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+    }
+    
+    /* Đảm bảo 3 hình ảnh đặc biệt luôn giữ tỉ lệ gốc */
+    .original-ratio-img {
+        width: auto !important;
+        height: auto !important;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain !important;
+    }
 }
 
 /* About Section Styles */
@@ -1315,6 +1331,7 @@ nav ul li a.active {
     .step-content {
         padding: 25px 20px;
         height: auto;
+        padding-bottom: 100px;
     }
     
     .step-content h2 {
@@ -1326,7 +1343,7 @@ nav ul li a.active {
         font-size: 15px;
         line-height: 1.4;
         padding-left: 10px;
-        margin: 0 0 120px 0;
+        margin: 0 0 50px 0;
         max-width: 100%;
     }
     
@@ -1343,10 +1360,10 @@ nav ul li a.active {
         right: auto;
         top: auto;
         left: 50%;
-        bottom: 20px;
+        bottom: 15px;
         transform: translateX(-50%);
-        width: 250px;
-        height: 110px;
+        width: 300px;
+        height: 140px;
     }
     
     .step-image img {
@@ -1671,6 +1688,14 @@ nav ul li a.active {
     .about-section, .tutorial-section, .demo-section, .contact-section {
         padding: 60px 40px;
     }
+
+    .original-ratio-img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
 }
 
 /* Tablet nhỏ & Mobile lớn */
@@ -1730,7 +1755,7 @@ nav ul li a.active {
     /* Điều chỉnh khoảng cách trong phần mô tả */
     .about-text p {
         line-height: 1.5;
-        margin-bottom: 10px;
+        margin-bottom: 0px;
     }
 }
 
@@ -1856,7 +1881,7 @@ nav ul li a.active {
     }
     
     .step-content {
-        padding: 15px 15px 110px 15px;
+        padding: 15px 15px 120px 15px;
         border-radius: 20px;
         height: auto;
         min-height: 220px;
@@ -1891,10 +1916,10 @@ nav ul li a.active {
     }
     
     .step-image {
-        width: 180px;
-        height: 80px;
+        width: 240px;
+        height: 120px;
         position: absolute;
-        bottom: 20px;
+        bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
         border-radius: 10px;
@@ -1946,6 +1971,15 @@ nav ul li a.active {
     
     .contact-info {
         gap: 10px;
+    }
+    
+    /* Đảm bảo 3 hình ảnh đặc biệt luôn giữ tỉ lệ gốc */
+    .original-ratio-img {
+        width: auto !important;
+        height: auto !important;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain !important;
     }
 }
 
