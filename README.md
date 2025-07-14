@@ -1,6 +1,4 @@
-# Dự án Nhà Thông Minh STEM
-
-![Smart Home Logo](assets/images/smart-home-logo.png)
+# ỨNG DỤNG VI ĐIỀU KHIỂN VÀ TRỢ LÝ GOOGLE TRONG XÂY DỰNG MÔ HÌNH ĐIỀU KHIỂN THIẾT BỊ IOT CHO NHÀ THÔNG MINH
 
 ## Giới thiệu
 
