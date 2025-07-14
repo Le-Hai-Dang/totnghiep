@@ -2193,3 +2193,53 @@ nav ul li a.active {
         background-size: cover;
     }
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .about-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .about-image .author-image {
+        max-width: 80%;
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 834px) {
+    .about-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .about-image {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 30px auto;
+    }
+    
+    .about-image .author-image {
+        max-width: 70%;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    .image-caption {
+        width: 90%;
+        text-align: center;
+        margin: 15px auto 0;
+    }
+}
